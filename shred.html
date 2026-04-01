@@ -182,26 +182,56 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 .water-count{font-size:11px;color:var(--muted);margin-top:8px}
 .water-count b{color:var(--accent)}
 
-.meal-block{padding:0 20px 18px}
-.meal-time-label{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
-.mtdot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--accent)}
-.ptabs{display:flex;gap:5px;margin-bottom:10px;flex-wrap:wrap}
-.ptab{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:500;border:1px solid var(--border);color:var(--muted);cursor:pointer;background:none;transition:all .15s}
-.ptab.active{background:var(--accent);border-color:var(--accent);color:#000}
+/* day-type tabs */
+.day-type-tabs{display:flex;gap:8px;padding:0 20px 16px}
+.dt-tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 8px;border-radius:14px;border:1.5px solid var(--border);background:var(--surface);cursor:pointer;transition:all .2s;user-select:none}
+.dt-tab:active{opacity:.8}
+.dt-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.dt-name{font-size:12px;font-weight:700;color:var(--muted)}
+.dt-days{font-size:9px;color:var(--muted);letter-spacing:.02em}
+.dt-tab.active{border-color:currentColor}
+.dt-tab.active .dt-name{color:inherit}
+.dt-tab.active .dt-days{opacity:.7}
+.dt-tab.blue{color:#60a5fa}
+.dt-tab.blue.active{background:rgba(96,165,250,.1);border-color:#60a5fa}
+.dt-tab.green{color:#4ade80}
+.dt-tab.green.active{background:rgba(74,222,128,.1);border-color:#4ade80}
+.dt-tab.free{color:#888}
+.dt-tab.free.active{background:rgba(136,136,136,.1);border-color:#888}
+
+/* day panels */
+.day-panel{display:none;padding:0 20px 24px}
+.day-panel.active{display:block}
+.day-banner{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;margin-bottom:16px}
+.day-banner.blue{background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.2)}
+.day-banner.green{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2)}
+.day-banner.free-bg{background:rgba(136,136,136,.08);border:1px solid rgba(136,136,136,.2)}
+.db-circle{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.db-circle.blue{background:rgba(96,165,250,.15)}
+.db-circle.green{background:rgba(74,222,128,.15)}
+.db-circle.free-c{background:rgba(136,136,136,.15)}
+.db-text{}
+.db-label{font-size:14px;font-weight:700}
+.db-sub{font-size:11px;color:var(--muted);margin-top:2px}
+
+.meal-section{margin-bottom:14px}
+.meal-section-hd{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.meal-section-icon{width:28px;height:28px;border-radius:8px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.meal-section-title{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
 .meal-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-.mp{display:none;padding:14px 16px}
-.mp.active{display:block}
-.mir{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
-.mir:last-child{border-bottom:none;padding-bottom:0}
+.mir{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);font-size:13px}
+.mir:last-child{border-bottom:none}
 .mi-icon{font-size:16px;width:24px;text-align:center;flex-shrink:0}
 .mi-name{flex:1;color:var(--text)}
-.mi-note{font-size:10px;color:var(--muted)}
-.alt-sec{padding:0 20px 24px}
-.alt-title{font-size:11px;font-weight:500;color:var(--muted);margin-bottom:10px}
-.alt-grid{display:flex;flex-wrap:wrap;gap:7px}
-.alt-tag{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 13px;font-size:11px;color:var(--text)}
-.alt-tag.ok{border-color:rgba(249,115,22,.35);color:var(--accent)}
-.alt-tag.ng{border-color:rgba(239,68,68,.3);color:var(--red)}
+.mi-note{font-size:10px;color:var(--muted);text-align:right}
+.mir.supp{background:rgba(249,115,22,.04)}
+.mir.supp .mi-name{color:var(--accent)}
+.mir.supp .mi-icon{font-size:14px}
+.free-day-body{text-align:center;padding:28px 16px}
+.free-day-body .fd-main{font-family:var(--fd);font-size:36px;color:var(--text);letter-spacing:2px;margin-bottom:8px}
+.free-day-body .fd-sub{font-size:13px;color:var(--muted);line-height:1.8}
+.tip-note{background:var(--s2);border-radius:12px;padding:12px 14px;margin-top:14px;font-size:12px;color:var(--muted);line-height:1.8;border-left:3px solid var(--accent)}
+.tip-note b{color:var(--text)}
 
 /* ── TIPS ── */
 .ms-bar{padding:0 20px 18px}
@@ -382,99 +412,178 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 <div class="view" id="view-diet">
   <div class="hd">
     <div class="logo">食事<span>.</span></div>
-    <div class="hd-sub">朝・昼のメニュー提案</div>
+    <div class="hd-sub">1週間メニュー</div>
   </div>
+
   <!-- Water tracker -->
   <div class="water-strip">
     <div class="water-label">水分補給 — 目標 1.5〜2L</div>
     <div class="water-glasses" id="water-glasses"></div>
     <div class="water-count" id="water-count"><b>0</b> / 8 杯（200ml × 8）</div>
   </div>
-  <!-- 朝食 -->
-  <div class="meal-block">
-    <div class="meal-time-label"><div class="mtdot"></div>朝食</div>
-    <div class="ptabs" id="morning-tabs">
-      <button class="ptab active" onclick="switchPat('morning',0,this)">A</button>
-      <button class="ptab" onclick="switchPat('morning',1,this)">B</button>
-      <button class="ptab" onclick="switchPat('morning',2,this)">C</button>
-      <button class="ptab" onclick="switchPat('morning',3,this)">G（そば）</button>
+
+  <!-- Day type tabs -->
+  <div class="day-type-tabs">
+    <div class="dt-tab blue active" id="dt-adjust" onclick="switchDayType('adjust')">
+      <div class="dt-dot" style="background:#60a5fa"></div>
+      <div class="dt-name">調整日</div>
+      <div class="dt-days">月・水・金</div>
     </div>
-    <div class="meal-card">
-      <div class="mp active" id="morning-0">
-        <div class="mir"><div class="mi-icon">🍙</div><div class="mi-name">十六穀米おにぎり</div><div class="mi-note">白米より◎</div></div>
-        <div class="mir"><div class="mi-icon">🥚</div><div class="mi-name">ゆでたまご</div><div class="mi-note">たんぱく質</div></div>
-        <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢</div><div class="mi-note">腸内環境◎</div></div>
+    <div class="dt-tab green" id="dt-light" onclick="switchDayType('light')">
+      <div class="dt-dot" style="background:#4ade80"></div>
+      <div class="dt-name">普通日</div>
+      <div class="dt-days">火・木</div>
+    </div>
+    <div class="dt-tab free" id="dt-free" onclick="switchDayType('free')">
+      <div class="dt-dot" style="background:#888"></div>
+      <div class="dt-name">自由日</div>
+      <div class="dt-days">土・日</div>
+    </div>
+  </div>
+
+  <!-- 🔵 調整日パネル -->
+  <div class="day-panel active" id="panel-adjust">
+    <div class="day-banner blue">
+      <div class="db-circle blue">🔵</div>
+      <div class="db-text">
+        <div class="db-label" style="color:#60a5fa">月・水・金 — 調整日</div>
+        <div class="db-sub">腸内環境・栄養バランスを整える日</div>
       </div>
-      <div class="mp" id="morning-1">
-        <div class="mir"><div class="mi-icon">🍙</div><div class="mi-name">鮭おにぎり</div><div class="mi-note">たんぱく質＋炭水化物</div></div>
-        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">納豆パック</div><div class="mi-note">腸活・肌に◎</div></div>
-        <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">めかぶ or もずく酢</div><div class="mi-note">食物繊維</div></div>
+    </div>
+
+    <!-- 朝食 -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">🌅</div>
+        <div class="meal-section-title">朝食</div>
       </div>
-      <div class="mp" id="morning-2">
-        <div class="mir"><div class="mi-icon">🍙</div><div class="mi-name">玄米おにぎり</div><div class="mi-note">食物繊維が豊富</div></div>
-        <div class="mir"><div class="mi-icon">🐟</div><div class="mi-name">サラダチキン</div><div class="mi-note">高たんぱく・低脂質</div></div>
-        <div class="mir"><div class="mi-icon">🥗</div><div class="mi-name">海藻サラダ</div><div class="mi-note">ミネラル補給</div></div>
+      <div class="meal-card">
+        <div class="mir"><div class="mi-icon">🍶</div><div class="mi-name">米糀甘酒</div><div class="mi-note">200ml</div></div>
+        <div class="mir"><div class="mi-icon">🥦</div><div class="mi-name">1日分の野菜（ジュース）</div><div class="mi-note">1本</div></div>
+        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">蒸し大豆 or ミックスビーンズ</div><div class="mi-note">1袋</div></div>
+        <div class="mir"><div class="mi-icon">🍵</div><div class="mi-name">なめこ汁 or あおさ汁</div><div class="mi-note">1杯</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">ディアナチュラ</div><div class="mi-note">朝食後に服用</div></div>
       </div>
-      <div class="mp" id="morning-3">
-        <div class="mir"><div class="mi-icon">🍜</div><div class="mi-name">ざるそば（小）</div><div class="mi-note">GI値低め・消化◎</div></div>
-        <div class="mir"><div class="mi-icon">🥚</div><div class="mi-name">ゆでたまご</div><div class="mi-note">たんぱく質補給</div></div>
-        <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢</div><div class="mi-note">腸内環境◎</div></div>
+    </div>
+
+    <!-- 昼食 -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">☀️</div>
+        <div class="meal-section-title">昼食</div>
+      </div>
+      <div class="meal-card">
+        <div class="mir"><div class="mi-icon">🍜</div><div class="mi-name">ざるそば or 十割そば</div><div class="mi-note">1食</div></div>
+        <div class="mir"><div class="mi-icon">🥚</div><div class="mi-name">温泉卵（トッピング）</div><div class="mi-note">1個</div></div>
+        <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢</div><div class="mi-note">1パック</div></div>
+        <div class="mir supp"><div class="mi-icon">🥤</div><div class="mi-name">ソイプロテイン（豆乳割り）</div><div class="mi-note">昼食後に1杯</div></div>
+      </div>
+    </div>
+
+    <!-- 夕食 -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">🌙</div>
+        <div class="meal-section-title">夕食</div>
+      </div>
+      <div class="meal-card">
+        <div class="mir"><div class="mi-icon">🍽️</div><div class="mi-name">普通食</div><div class="mi-note">制限なし</div></div>
+      </div>
+    </div>
+
+    <!-- 就寝前 -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">🌛</div>
+        <div class="meal-section-title">就寝前</div>
+      </div>
+      <div class="meal-card">
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">ビフィラル</div><div class="mi-note">就寝前</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">DHC カルシウム／マグ</div><div class="mi-note">就寝前</div></div>
       </div>
     </div>
   </div>
-  <!-- 昼食 -->
-  <div class="meal-block">
-    <div class="meal-time-label"><div class="mtdot" style="background:var(--a2)"></div>昼食</div>
-    <div class="ptabs" id="lunch-tabs">
-      <button class="ptab active" onclick="switchPat('lunch',0,this)">A</button>
-      <button class="ptab" onclick="switchPat('lunch',1,this)">B</button>
-      <button class="ptab" onclick="switchPat('lunch',2,this)">C</button>
-      <button class="ptab" onclick="switchPat('lunch',3,this)">G（そば）</button>
-      <button class="ptab" onclick="switchPat('lunch',4,this)">H（十割）</button>
+
+  <!-- 🟢 普通日パネル -->
+  <div class="day-panel" id="panel-light">
+    <div class="day-banner green">
+      <div class="db-circle green">🟢</div>
+      <div class="db-text">
+        <div class="db-label" style="color:#4ade80">火・木 — 軽め普通日</div>
+        <div class="db-sub">昼食は自由・サプリは継続</div>
+      </div>
     </div>
-    <div class="meal-card">
-      <div class="mp active" id="lunch-0">
-        <div class="mir"><div class="mi-icon">🍜</div><div class="mi-name">ざるそば</div><div class="mi-note">GI値低め</div></div>
-        <div class="mir"><div class="mi-icon">🥚</div><div class="mi-name">ゆでたまご × 1</div><div class="mi-note">たんぱく質補給</div></div>
-        <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢 or めかぶ</div><div class="mi-note">食物繊維</div></div>
+
+    <!-- 朝食 -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">🌅</div>
+        <div class="meal-section-title">朝食</div>
       </div>
-      <div class="mp" id="lunch-1">
-        <div class="mir"><div class="mi-icon">🍙</div><div class="mi-name">雑穀おにぎり</div><div class="mi-note">精白米より◎</div></div>
-        <div class="mir"><div class="mi-icon">🫛</div><div class="mi-name">豆腐パック or 枝豆</div><div class="mi-note">植物性たんぱく質</div></div>
-        <div class="mir"><div class="mi-icon">🥗</div><div class="mi-name">ひじき煮 or きんぴら</div><div class="mi-note">ミネラル・食物繊維</div></div>
+      <div class="meal-card">
+        <div class="mir"><div class="mi-icon">🍶</div><div class="mi-name">米糀甘酒</div><div class="mi-note">200ml</div></div>
+        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">蒸し大豆 or ミックスビーンズ</div><div class="mi-note">1袋</div></div>
+        <div class="mir"><div class="mi-icon">🍵</div><div class="mi-name">味噌汁</div><div class="mi-note">1杯</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">ディアナチュラ</div><div class="mi-note">朝食後に服用</div></div>
       </div>
-      <div class="mp" id="lunch-2">
-        <div class="mir"><div class="mi-icon">🍱</div><div class="mi-name">揚げ物なし弁当</div><div class="mi-note">から揚げ・カツは避ける</div></div>
-        <div class="mir"><div class="mi-icon">🥚</div><div class="mi-name">ゆでたまご（追加）</div><div class="mi-note">たんぱく質を補う</div></div>
-        <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢（追加）</div><div class="mi-note">腸内環境を整える</div></div>
+    </div>
+
+    <!-- 昼食 -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">☀️</div>
+        <div class="meal-section-title">昼食</div>
       </div>
-      <div class="mp" id="lunch-3">
-        <div class="mir"><div class="mi-icon">🍜</div><div class="mi-name">ざるそば</div><div class="mi-note">GI値低め</div></div>
-        <div class="mir"><div class="mi-icon">🥚</div><div class="mi-name">ゆでたまご</div><div class="mi-note">たんぱく質補給</div></div>
-        <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">めかぶ or もずく酢</div><div class="mi-note">食物繊維</div></div>
+      <div class="meal-card">
+        <div class="mir"><div class="mi-icon">🍱</div><div class="mi-name">自由（揚げ物・丼は控えめ推奨）</div><div class="mi-note">–</div></div>
+        <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢（追加推奨）</div><div class="mi-note">1パック</div></div>
+        <div class="mir supp"><div class="mi-icon">🥤</div><div class="mi-name">ソイプロテイン（豆乳割り）</div><div class="mi-note">昼食後に1杯</div></div>
       </div>
-      <div class="mp" id="lunch-4">
-        <div class="mir"><div class="mi-icon">🍜</div><div class="mi-name">十割そば（コンビニ・スーパー）</div><div class="mi-note">血糖値上昇が緩やか</div></div>
-        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">納豆パック</div><div class="mi-note">腸活・たんぱく質</div></div>
-        <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢</div><div class="mi-note">腸内環境◎</div></div>
+    </div>
+
+    <!-- 夕食 -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">🌙</div>
+        <div class="meal-section-title">夕食</div>
+      </div>
+      <div class="meal-card">
+        <div class="mir"><div class="mi-icon">🍽️</div><div class="mi-name">普通食</div><div class="mi-note">制限なし</div></div>
+      </div>
+    </div>
+
+    <!-- 就寝前 -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">🌛</div>
+        <div class="meal-section-title">就寝前</div>
+      </div>
+      <div class="meal-card">
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">ビフィラル</div><div class="mi-note">就寝前</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">DHC カルシウム／マグ</div><div class="mi-note">就寝前</div></div>
       </div>
     </div>
   </div>
-  <!-- 代替 -->
-  <div class="alt-sec">
-    <div class="sec-title" style="margin-bottom:12px">代替メニュー</div>
-    <div class="alt-title">選んでOK ✓</div>
-    <div class="alt-grid" style="margin-bottom:16px">
-      <span class="alt-tag ok">サラダチキン</span><span class="alt-tag ok">ツナ缶（水煮）</span><span class="alt-tag ok">温泉卵</span>
-      <span class="alt-tag ok">豆腐</span><span class="alt-tag ok">味噌汁</span><span class="alt-tag ok">海藻サラダ</span>
-      <span class="alt-tag ok">十割そば</span><span class="alt-tag ok">ざるそば</span><span class="alt-tag ok">蒸し鶏サラダ</span>
-      <span class="alt-tag ok">玄米おにぎり</span><span class="alt-tag ok">無糖ヨーグルト</span>
+
+  <!-- ⚪ 自由日パネル -->
+  <div class="day-panel" id="panel-free">
+    <div class="day-banner free-bg">
+      <div class="db-circle free-c">⚪</div>
+      <div class="db-text">
+        <div class="db-label" style="color:#aaa">土・日 — 自由日</div>
+        <div class="db-sub">全食自由。サプリは継続推奨</div>
+      </div>
     </div>
-    <div class="alt-title">できるだけ避ける ✕</div>
-    <div class="alt-grid">
-      <span class="alt-tag ng">揚げ物全般</span><span class="alt-tag ng">菓子パン</span>
-      <span class="alt-tag ng">甘い飲み物</span><span class="alt-tag ng">スナック菓子</span>
-      <span class="alt-tag ng">カップラーメン</span><span class="alt-tag ng">白米大盛り</span>
+    <div class="meal-card">
+      <div class="free-day-body">
+        <div class="fd-main">FREE DAY</div>
+        <div class="fd-sub">全食自由です。<br>好きなものを食べてリフレッシュ。</div>
+      </div>
+    </div>
+    <div class="tip-note">
+      <b>続けると効果的なもの</b><br>
+      もずく酢は続けると腸の調子が整いやすい<br>
+      ディアナチュラ・ビフィラル・DHCカルシウム／マグは継続推奨
     </div>
   </div>
 </div>
@@ -1122,6 +1231,7 @@ function switchView(id,btn){
   btn.classList.add('active');
   if(id==='weight') renderWeightView();
   if(id==='schedule') renderScheduleView();
+  if(id==='diet') initDietTab();
 }
 
 // ── DIET ──
@@ -1141,11 +1251,20 @@ function renderWater(){
 
 function toggleWater(i){ waterCount=(i<waterCount)?i:i+1; localStorage.setItem(waterKey,waterCount); renderWater(); }
 
-function switchPat(meal,idx,btn){
-  document.querySelectorAll(`#${meal}-tabs .ptab`).forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll(`[id^="${meal}-"]`).forEach(p=>{ if(p.classList.contains('mp')) p.classList.remove('active'); });
-  document.getElementById(`${meal}-${idx}`).classList.add('active');
+function switchDayType(type){
+  ['adjust','light','free'].forEach(t=>{
+    document.getElementById('dt-'+t).classList.remove('active');
+    document.getElementById('panel-'+t).classList.remove('active');
+  });
+  document.getElementById('dt-'+type).classList.add('active');
+  document.getElementById('panel-'+type).classList.add('active');
+}
+
+function initDietTab(){
+  const d = today.getDay(); // 0=日,1=月,2=火,3=水,4=木,5=金,6=土
+  if(d===2||d===4) switchDayType('light');
+  else if(d===0||d===6) switchDayType('free');
+  else switchDayType('adjust');
 }
 
 // ── PWA ──
