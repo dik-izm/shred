@@ -370,10 +370,6 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
     <div class="sec-title">今週のメニュー</div>
     <div id="schedule-detail"></div>
   </div>
-  <div class="sec" style="padding-top:0">
-    <div class="sec-title">全フェーズ一覧</div>
-    <div class="phase-cards-grid" id="phase-cards-grid"></div>
-  </div>
 </div>
 
 <!-- ════ WEIGHT VIEW ════ -->
@@ -415,6 +411,13 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
     <div class="hd-sub">1週間メニュー</div>
   </div>
 
+  <!-- Water tracker -->
+  <div class="water-strip">
+    <div class="water-label">水分補給 — 目標 1.5〜2L</div>
+    <div class="water-glasses" id="water-glasses"></div>
+    <div class="water-count" id="water-count"><b>0</b> / 8 杯（200ml × 8）</div>
+  </div>
+
   <!-- Day type tabs -->
   <div class="day-type-tabs">
     <div class="dt-tab blue active" id="dt-adjust" onclick="switchDayType('adjust')">
@@ -452,10 +455,11 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
       </div>
       <div class="meal-card">
         <div class="mir"><div class="mi-icon">🍶</div><div class="mi-name">米糀甘酒</div><div class="mi-note">200ml</div></div>
+        <div class="mir"><div class="mi-icon">🥦</div><div class="mi-name">1日分の野菜（ジュース）</div><div class="mi-note">1本</div></div>
         <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">蒸し大豆 or ミックスビーンズ</div><div class="mi-note">1袋</div></div>
         <div class="mir"><div class="mi-icon">🍵</div><div class="mi-name">なめこ汁 or あおさ汁</div><div class="mi-note">1杯</div></div>
         <div class="mir supp"><div class="mi-icon">🥤</div><div class="mi-name">ソイプロテイン（水割り）</div><div class="mi-note">朝食時に1杯</div></div>
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">アンビーク メンズマルチビタミン</div><div class="mi-note">朝食後2粒</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">ディアナチュラ</div><div class="mi-note">朝食後に服用</div></div>
       </div>
     </div>
 
@@ -469,8 +473,6 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
         <div class="mir"><div class="mi-icon">🍜</div><div class="mi-name">ざるそば or 十割そば</div><div class="mi-note">1食</div></div>
         <div class="mir"><div class="mi-icon">🥚</div><div class="mi-name">温泉卵（トッピング）</div><div class="mi-note">1個</div></div>
         <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢</div><div class="mi-note">1パック</div></div>
-        <div class="mir"><div class="mi-icon">🐟🍄</div><div class="mi-name">サバ水煮缶 or まいたけ（どちらか1つ）</div><div class="mi-note">1つ</div></div>
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">アンビーク メンズマルチビタミン</div><div class="mi-note">昼食後2粒</div></div>
       </div>
     </div>
 
@@ -519,7 +521,7 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
         <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">蒸し大豆 or ミックスビーンズ</div><div class="mi-note">1袋</div></div>
         <div class="mir"><div class="mi-icon">🍵</div><div class="mi-name">味噌汁</div><div class="mi-note">1杯</div></div>
         <div class="mir supp"><div class="mi-icon">🥤</div><div class="mi-name">ソイプロテイン（水割り）</div><div class="mi-note">朝食時に1杯</div></div>
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">アンビーク メンズマルチビタミン</div><div class="mi-note">朝食後2粒</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">ディアナチュラ</div><div class="mi-note">朝食後に服用</div></div>
       </div>
     </div>
 
@@ -532,8 +534,6 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
       <div class="meal-card">
         <div class="mir"><div class="mi-icon">🍱</div><div class="mi-name">自由（揚げ物・丼は控えめ推奨）</div><div class="mi-note">–</div></div>
         <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢（追加推奨）</div><div class="mi-note">1パック</div></div>
-        <div class="mir"><div class="mi-icon">🐟🍄</div><div class="mi-name">サバ水煮缶 or まいたけ（どちらか1つ）</div><div class="mi-note">1つ</div></div>
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">アンビーク メンズマルチビタミン</div><div class="mi-note">昼食後2粒</div></div>
       </div>
     </div>
 
@@ -579,40 +579,7 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
     <div class="tip-note">
       <b>続けると効果的なもの</b><br>
       もずく酢は続けると腸の調子が整いやすい<br>
-      アンビーク メンズマルチビタミン・ビフィラル・DHCカルシウム／マグは継続推奨
-    </div>
-  </div>
-</div>
-
-<!-- ════ TIPS VIEW ════ -->
-<div class="view" id="view-tips">
-  <div class="hd">
-    <div class="logo">コツ<span>.</span></div>
-    <div class="hd-sub">継続するためのガイド</div>
-  </div>
-  <div class="ms-bar">
-    <div class="ms-row">
-      <div class="ms-card"><div class="ms-week">2W</div><div class="ms-label">体が慣れてくる</div></div>
-      <div class="ms-card"><div class="ms-week">4W</div><div class="ms-label">体重・体型に変化</div></div>
-      <div class="ms-card"><div class="ms-week">8W</div><div class="ms-label">見た目に明確な変化</div></div>
-      <div class="ms-card"><div class="ms-week">12W</div><div class="ms-label">習慣として定着</div></div>
-    </div>
-  </div>
-  <div class="tip-sec">
-    <div class="tip-card"><div class="tip-num">1</div><div class="tip-title">完璧を求めない</div><div class="tip-body">「70%できればOK」のマインドで長続きする。できた日を積み重ねることが最重要。</div></div>
-    <div class="tip-card"><div class="tip-num">2</div><div class="tip-title">毎日同じ時間に</div><div class="tip-body">起床後・帰宅後など、決まった時間帯に行う。習慣化が定着すると意志力が不要になる。</div></div>
-    <div class="tip-card"><div class="tip-num">3</div><div class="tip-title">体重より「フィット感」で確認</div><div class="tip-body">体重は水分や食事で毎日変わる。ウエスト周囲径や服のフィット感で進捗を確認する。</div></div>
-    <div class="tip-card"><div class="tip-num">4</div><div class="tip-title">睡眠7時間を確保</div><div class="tip-body">寝不足は脂肪が燃えにくくなり、筋肉の回復も遅れる。睡眠は最高のサプリメント。</div></div>
-    <div class="tip-card"><div class="tip-num">5</div><div class="tip-title">筋肉痛との付き合い方</div><div class="tip-body">2〜3日で引くのが正常。強い痛みが続く場合は無理せず休養日を増やす。</div></div>
-    <div class="tip-card" style="border-color:var(--ba);background:linear-gradient(135deg,#1a0e05,var(--surface))">
-      <div class="tip-num" style="color:rgba(249,115,22,.2)">📱</div>
-      <div class="tip-title">ホーム画面に追加する方法</div>
-      <div class="tip-body">
-        <b style="color:var(--text)">iOS (Safari)</b><br>
-        画面下の共有ボタン →「ホーム画面に追加」をタップ<br><br>
-        <b style="color:var(--text)">Android (Chrome)</b><br>
-        右上のメニュー → 「ホーム画面に追加」をタップ<br>または上部に表示されるインストールバナーを使用
-      </div>
+      ディアナチュラ・ビフィラル・DHCカルシウム／マグは継続推奨
     </div>
   </div>
 </div>
@@ -630,9 +597,6 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
   </button>
   <button class="ni" onclick="switchView('diet',this)">
     <svg viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4v13h2V11h4a2 2 0 002-2V2H3zm4 7V4h2v5H7zm4 0V4h2v5h-2z"/></svg>食事
-  </button>
-  <button class="ni" onclick="switchView('tips',this)">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>コツ
   </button>
 </nav>
 </div><!-- .app -->
@@ -673,71 +637,29 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 
 <script>
 // ════════════════════════════════════════
-// DATA — 4-PHASE PROGRAM
+// DATA — 固定週間プログラム
 // ════════════════════════════════════════
-const PHASE_META = {
-  1:{ name:'フェーズ1', weeks:'1〜4週', daysPerWeek:3, durationMin:10, desc:'基礎習慣をつくる' },
-  2:{ name:'フェーズ2', weeks:'5〜8週', daysPerWeek:4, durationMin:15, desc:'強度アップ' },
-  3:{ name:'フェーズ3', weeks:'9〜12週', daysPerWeek:5, durationMin:20, desc:'部位別トレーニング' },
-  4:{ name:'フェーズ4', weeks:'13週〜', daysPerWeek:5, durationMin:28, desc:'本格プログラム' },
-};
-
-// dayKey → workout data per phase (null = rest)
 const DAY_WORKOUTS = {
-  1:{
-    sun:null, sat:null, tue:null, thu:null,
-    mon:{ label:'全身基礎', typeClass:'orange', ex:[
-      {name:'腹筋ローラー膝コロ',meta:'体幹基礎',sets:2,reps:'5回'},
-      {name:'プッシュアップ（膝つき）',meta:'胸・肩',sets:2,reps:'10回'},
-      {name:'スクワット',meta:'太もも・お尻',sets:2,reps:'25回'},
-    ]},
-    wed:null, fri:null,
-  },
-  2:{
-    sun:null, sat:null, tue:null, thu:null,
-    mon:{ label:'全身強化', typeClass:'orange', ex:[
-      {name:'腹筋ローラー膝コロ',meta:'体幹基礎',sets:3,reps:'10回'},
-      {name:'プッシュアップ',meta:'胸・肩',sets:3,reps:'20回'},
-      {name:'スクワット',meta:'太もも・お尻',sets:3,reps:'30回'},
-      {name:'レッグレイズ',meta:'腹筋下部',sets:2,reps:'15回'},
-    ]},
-    wed:null, fri:null,
-  },
-  3:{
-    sun:null, sat:null, tue:null, thu:null,
-    mon:{ label:'全身強化', typeClass:'orange', ex:[
-      {name:'腹筋ローラー膝コロ',meta:'体幹基礎',sets:3,reps:'15回'},
-      {name:'プッシュアップ',meta:'胸・肩',sets:3,reps:'25回'},
-      {name:'スクワット',meta:'太もも・お尻',sets:3,reps:'35回'},
-      {name:'バーピー',meta:'全身・有酸素',sets:2,reps:'8回'},
-    ]},
-    wed:null, fri:null,
-  },
-  4:{
-    sun:null, sat:null, tue:null, thu:null,
-    mon:{ label:'全身強化', typeClass:'orange', ex:[
-      {name:'腹筋ローラー立ちコロ',meta:'体幹基礎',sets:3,reps:'5回'},
-      {name:'ワイドプッシュアップ',meta:'胸に効かせる',sets:3,reps:'20回'},
-      {name:'ブルガリアンスクワット',meta:'左右各',sets:3,reps:'15回'},
-      {name:'サイドプランク',meta:'腹斜筋・ウエスト',sets:2,reps:'60秒'},
-      {name:'バーピー',meta:'全身・有酸素',sets:3,reps:'10回'},
-    ]},
-    wed:null, fri:null,
-  },
+  mon:{ label:'胸・腕', typeClass:'white', dur:10, ex:[
+    {name:'プッシュアップ（膝なし）', meta:'胸・肩・三頭筋', sets:2, reps:'10回'},
+    {name:'ワイドプッシュアップ', meta:'胸に効かせる', sets:2, reps:'10回'},
+  ]},
+  tue:{ label:'下半身', typeClass:'orange', dur:8, ex:[
+    {name:'スクワット（2Lペットボトル）', meta:'太もも・お尻 左右1本ずつ', sets:2, reps:'25回'},
+  ]},
+  wed:{ label:'体幹・腹筋', typeClass:'white', dur:10, ex:[
+    {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:2, reps:'5回'},
+    {name:'ホローホールド', meta:'体幹全体', sets:2, reps:'30秒'},
+  ]},
+  thu:null,
+  fri:{ label:'下半身＋体幹', typeClass:'orange', dur:10, ex:[
+    {name:'スクワット（2Lペットボトル）', meta:'太もも・お尻 左右1本ずつ', sets:2, reps:'15回'},
+    {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:2, reps:'3回'},
+  ]},
+  sat:null, sun:null
 };
-
-// Phase 1: wed/fri = same as mon
-DAY_WORKOUTS[1].wed = DAY_WORKOUTS[1].mon;
-DAY_WORKOUTS[1].fri = DAY_WORKOUTS[1].mon;
-// Phase 2: wed/fri = same as mon
-DAY_WORKOUTS[2].wed = DAY_WORKOUTS[2].mon;
-DAY_WORKOUTS[2].fri = DAY_WORKOUTS[2].mon;
-// Phase 3: wed/fri = same as mon
-DAY_WORKOUTS[3].wed = DAY_WORKOUTS[3].mon;
-DAY_WORKOUTS[3].fri = DAY_WORKOUTS[3].mon;
-// Phase 4: wed/fri = same as mon
-DAY_WORKOUTS[4].wed = DAY_WORKOUTS[4].mon;
-DAY_WORKOUTS[4].fri = DAY_WORKOUTS[4].mon;
+// 木曜は月曜と同じ（胸・腕）
+DAY_WORKOUTS.thu = DAY_WORKOUTS.mon;
 
 const DAY_LABELS = ['日','月','火','水','木','金','土'];
 const DAY_KEYS   = ['sun','mon','tue','wed','thu','fri','sat'];
@@ -747,7 +669,6 @@ const today    = new Date();
 const todayKey = DAY_KEYS[today.getDay()];
 
 function fmtDate(d){ return d.toISOString().slice(0,10); }
-function getPhase(w){ return w<=4?1:w<=8?2:w<=12?3:4; }
 
 let currentWeek   = parseInt(localStorage.getItem('shred_week')||'1');
 let completedDays = JSON.parse(localStorage.getItem('shred_completed')||'[]');
@@ -758,9 +679,8 @@ let chartRange    = 14; // 0 = all
 document.getElementById('current-week').textContent = currentWeek;
 
 // ── HELPERS ──
-function phase(){ return getPhase(currentWeek); }
-function todayWorkout(){ return DAY_WORKOUTS[phase()][todayKey]; }
-function isWorkDay(dayKey, ph){ return DAY_WORKOUTS[ph][dayKey] !== null; }
+function todayWorkout(){ return DAY_WORKOUTS[todayKey]; }
+function isWorkDay(dayKey){ return DAY_WORKOUTS[dayKey] !== null; }
 
 // ── STATS ──
 function calcStreak(){
@@ -780,17 +700,15 @@ function updateStats(){
 
 // ── PHASE STRIP ──
 function renderPhaseStrip(){
-  const ph = phase();
-  const pm = PHASE_META[ph];
-  document.getElementById('ps-name').textContent  = pm.name;
-  document.getElementById('ps-meta').textContent  = `${pm.weeks} · 週${pm.daysPerWeek}日 · ${pm.durationMin}分`;
+  document.getElementById('ps-name').textContent = '週間プログラム';
+  document.getElementById('ps-meta').textContent = '月・火・水・木・金 × 週5日';
 
   // this week workout days
   const start = new Date(today); start.setDate(today.getDate()-today.getDay());
   let total=0, done=0;
   for(let i=0;i<7;i++){
     const d=new Date(start); d.setDate(start.getDate()+i);
-    if(isWorkDay(DAY_KEYS[d.getDay()],ph)){
+    if(isWorkDay(DAY_KEYS[d.getDay()])){
       total++;
       if(completedDays.includes(fmtDate(d))) done++;
     }
@@ -804,14 +722,13 @@ function renderPhaseStrip(){
 
 // ── WEEK GRID ──
 function renderWeekGrid(){
-  const ph    = phase();
   const grid  = document.getElementById('week-grid');
   grid.innerHTML = '';
   const start = new Date(today); start.setDate(today.getDate()-today.getDay());
   for(let i=0;i<7;i++){
     const d      = new Date(start); d.setDate(start.getDate()+i);
     const key    = DAY_KEYS[d.getDay()];
-    const isRest = !isWorkDay(key, ph);
+    const isRest = !isWorkDay(key);
     const isToday= d.toDateString()===today.toDateString();
     const isDone = completedDays.includes(fmtDate(d));
     const dd = document.createElement('div');
@@ -823,20 +740,19 @@ function renderWeekGrid(){
 
 // ── TODAY CARD ──
 function renderTodayCard(){
-  const ph  = phase();
-  const pm  = PHASE_META[ph];
   const wo  = todayWorkout();
   const el  = document.getElementById('ex-list');
   const btn = document.getElementById('start-btn');
+  const wdLabel = DAY_LABELS[today.getDay()]+'曜日';
 
-  document.getElementById('phase-badge').textContent = `Phase ${ph}`;
+  document.getElementById('phase-badge').textContent = wdLabel;
 
   if(!wo){
     document.getElementById('today-type').textContent = '休養日';
     document.getElementById('today-type').className   = 'tc-type gray';
     document.getElementById('focus-badge').textContent= '完全休息';
     document.getElementById('today-dur').textContent  = '–';
-    el.innerHTML = `<div class="rest-msg">今日はしっかり休んで筋肉を回復させましょう。<br>軽いストレッチは問題ありません。</div>`;
+    el.innerHTML = `<div class="rest-msg">今日はしっかり休んで筋肉を回復させましょう。<br>ストレッチのみ◎</div>`;
     btn.textContent = '完了 ✓'; btn.className = 'start-btn sec-btn';
     btn.disabled = false; btn.style.opacity='1'; btn.onclick = markRestDone;
     if(completedDays.includes(fmtDate(today))){
@@ -847,8 +763,8 @@ function renderTodayCard(){
 
   document.getElementById('today-type').textContent = wo.label;
   document.getElementById('today-type').className   = 'tc-type '+wo.typeClass;
-  document.getElementById('focus-badge').textContent= pm.name;
-  document.getElementById('today-dur').textContent  = pm.durationMin;
+  document.getElementById('focus-badge').textContent= '週5日';
+  document.getElementById('today-dur').textContent  = wo.dur || '–';
 
   el.innerHTML = '';
   wo.ex.forEach((ex,i)=>{
@@ -965,31 +881,29 @@ function promptWeekChange(){
 
 // ── SCHEDULE VIEW ──
 function renderScheduleView(){
-  const ph=phase(); const pm=PHASE_META[ph];
-  document.getElementById('sch-sub').textContent=`スケジュール（${pm.name} · ${pm.weeks}）`;
+  document.getElementById('sch-sub').textContent = '固定週間スケジュール';
 
-  const days={1:['月','水','金'],2:['月','火','木','金'],3:['月','火','水','木','金'],4:['月','火','水','木','金']};
   const schedDays = [
     {key:'mon',label:'月'},
     {key:'tue',label:'火'},
     {key:'wed',label:'水'},
     {key:'thu',label:'木'},
     {key:'fri',label:'金'},
-    {key:'sat',label:'土・日'},
+    {key:'sat',label:'土'},
+    {key:'sun',label:'日'},
   ];
 
   let html='';
-  const seenLabels=new Set();
   const restDays=[];
-
-  // group workout days by unique label
   const groups=[];
+
+  // group workout days by unique workout object (merges mon+thu)
   schedDays.forEach(({key,label})=>{
-    const wo=DAY_WORKOUTS[ph][key];
+    const wo=DAY_WORKOUTS[key];
     if(!wo){ restDays.push(label); return; }
-    const g=groups.find(g=>g.label===wo.label);
+    const g=groups.find(g=>g.wo===wo);
     if(g) g.days.push(label);
-    else groups.push({label:wo.label,typeClass:wo.typeClass,ex:wo.ex,days:[label]});
+    else groups.push({label:wo.label,typeClass:wo.typeClass,ex:wo.ex,dur:wo.dur,days:[label],wo});
   });
 
   groups.forEach(g=>{
@@ -997,7 +911,7 @@ function renderScheduleView(){
     html+=`<div class="sch-card">
       <div class="sch-days ${g.typeClass}">${g.days.join('<br>')}</div>
       <div class="sch-info">
-        <div class="sch-type">${g.label} <span style="font-size:10px;color:var(--muted);font-weight:400">${pm.durationMin}分</span></div>
+        <div class="sch-type">${g.label} <span style="font-size:10px;color:var(--muted);font-weight:400">${g.dur||''}分</span></div>
         <div class="sch-exes">${exStr}</div>
       </div></div>`;
   });
@@ -1007,27 +921,10 @@ function renderScheduleView(){
       <div class="sch-days gray">${restDays.join('<br>')}</div>
       <div class="sch-info">
         <div class="sch-type" style="color:var(--muted)">完全休息</div>
-        <div class="sch-exes">筋肉の回復・成長が起きる大切な日。軽いストレッチは◎</div>
+        <div class="sch-exes">筋肉の回復・成長が起きる大切な日。ストレッチのみ◎</div>
       </div></div>`;
   }
   document.getElementById('schedule-detail').innerHTML=html;
-
-  // Phase cards
-  let pgHtml='';
-  [1,2,3,4].forEach(p=>{
-    const pm2=PHASE_META[p];
-    pgHtml+=`<div class="phase-card${p===ph?' current':''}">
-      <div class="pc-num">${p}</div>
-      <div class="pc-body">
-        <div class="pc-name">${pm2.name} — ${pm2.weeks}</div>
-        <div class="pc-weeks">${pm2.desc}</div>
-        <div class="pc-tags">
-          <div class="pc-tag">週${pm2.daysPerWeek}日</div>
-          <div class="pc-tag">${pm2.durationMin}分</div>
-        </div>
-      </div></div>`;
-  });
-  document.getElementById('phase-cards-grid').innerHTML=pgHtml;
 }
 
 // ── WEIGHT ──
