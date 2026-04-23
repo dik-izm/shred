@@ -24,11 +24,11 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 .app{max-width:430px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
 
 /* ── VIEWS ── */
-.view{flex:1;display:none;overflow-y:auto;padding-bottom:4px}
+.view{flex:1;display:none;overflow-y:auto;padding-bottom:calc(60px + env(safe-area-inset-bottom,20px))}
 .view.active{display:block}
 
 /* ── BOTTOM NAV ── */
-.bnav{position:sticky;bottom:0;display:flex;background:rgba(10,10,10,.97);backdrop-filter:blur(16px);border-top:1px solid var(--border);padding:8px 0 env(safe-area-inset-bottom,20px)}
+.bnav{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;background:rgba(10,10,10,.97);backdrop-filter:blur(16px);border-top:1px solid var(--border);padding:8px 0 env(safe-area-inset-bottom,20px)}
 .ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9px;color:var(--muted);cursor:pointer;padding:4px 0;transition:color .15s;background:none;border:none;letter-spacing:.02em}
 .ni.active{color:var(--accent)}
 .ni svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.6}
@@ -455,11 +455,21 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
       </div>
       <div class="meal-card">
         <div class="mir"><div class="mi-icon">🍶</div><div class="mi-name">米糀甘酒</div><div class="mi-note">200ml</div></div>
-        <div class="mir"><div class="mi-icon">🥦</div><div class="mi-name">1日分の野菜（ジュース）</div><div class="mi-note">1本</div></div>
-        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">蒸し大豆 or ミックスビーンズ</div><div class="mi-note">1袋</div></div>
-        <div class="mir"><div class="mi-icon">🍵</div><div class="mi-name">なめこ汁 or あおさ汁</div><div class="mi-note">1杯</div></div>
-        <div class="mir supp"><div class="mi-icon">🥤</div><div class="mi-name">ソイプロテイン（水割り）</div><div class="mi-note">朝食時に1杯</div></div>
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">ディアナチュラ</div><div class="mi-note">朝食後に服用</div></div>
+        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">蒸し大豆 or 納豆</div><div class="mi-note">1袋</div></div>
+        <div class="mir"><div class="mi-icon">🍵</div><div class="mi-name">なめこ汁 or あおさ汁</div><div class="mi-note">1杯（蕎麦湯割り可）</div></div>
+        <div class="mir supp"><div class="mi-icon">🥤</div><div class="mi-name">ソイプロテイン（水割り）</div><div class="mi-note">1杯</div></div>
+        <div class="mir supp"><div class="mi-icon">💪</div><div class="mi-name">クレアチン</div><div class="mi-note">3〜4g（プロテインに混ぜる）</div></div>
+      </div>
+    </div>
+
+    <!-- 朝食後 -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">💊</div>
+        <div class="meal-section-title">朝食後</div>
+      </div>
+      <div class="meal-card">
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">アンビーク メンズマルチビタミン</div><div class="mi-note">2粒</div></div>
       </div>
     </div>
 
@@ -473,6 +483,18 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
         <div class="mir"><div class="mi-icon">🍜</div><div class="mi-name">ざるそば or 十割そば</div><div class="mi-note">1食</div></div>
         <div class="mir"><div class="mi-icon">🥚</div><div class="mi-name">温泉卵（トッピング）</div><div class="mi-note">1個</div></div>
         <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢</div><div class="mi-note">1パック</div></div>
+        <div class="mir"><div class="mi-icon">🐟</div><div class="mi-name">サバ水煮缶 or まいたけ</div><div class="mi-note">どちらか一方</div></div>
+      </div>
+    </div>
+
+    <!-- 昼食後 -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">💊</div>
+        <div class="meal-section-title">昼食後</div>
+      </div>
+      <div class="meal-card">
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">アンビーク メンズマルチビタミン</div><div class="mi-note">2粒</div></div>
       </div>
     </div>
 
@@ -484,6 +506,7 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
       </div>
       <div class="meal-card">
         <div class="mir"><div class="mi-icon">🍽️</div><div class="mi-name">普通食</div><div class="mi-note">制限なし</div></div>
+        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">納豆</div><div class="mi-note">追加推奨</div></div>
       </div>
     </div>
 
@@ -491,11 +514,11 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
     <div class="meal-section">
       <div class="meal-section-hd">
         <div class="meal-section-icon">🌛</div>
-        <div class="meal-section-title">就寝前</div>
+        <div class="meal-section-title">就寝前（夕食2時間後）</div>
       </div>
       <div class="meal-card">
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">ビフィラル</div><div class="mi-note">就寝前</div></div>
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">DHC カルシウム／マグ</div><div class="mi-note">就寝前</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">ビフィラル</div><div class="mi-note">1粒</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">DHC カルシウム／マグ</div><div class="mi-note">3粒</div></div>
       </div>
     </div>
   </div>
@@ -505,7 +528,7 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
     <div class="day-banner green">
       <div class="db-circle green">🟢</div>
       <div class="db-text">
-        <div class="db-label" style="color:#4ade80">火・木 — 軽め普通日</div>
+        <div class="db-label" style="color:#4ade80">火・木 — 普通日</div>
         <div class="db-sub">昼食は自由・サプリは継続</div>
       </div>
     </div>
@@ -518,10 +541,21 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
       </div>
       <div class="meal-card">
         <div class="mir"><div class="mi-icon">🍶</div><div class="mi-name">米糀甘酒</div><div class="mi-note">200ml</div></div>
-        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">蒸し大豆 or ミックスビーンズ</div><div class="mi-note">1袋</div></div>
-        <div class="mir"><div class="mi-icon">🍵</div><div class="mi-name">味噌汁</div><div class="mi-note">1杯</div></div>
-        <div class="mir supp"><div class="mi-icon">🥤</div><div class="mi-name">ソイプロテイン（水割り）</div><div class="mi-note">朝食時に1杯</div></div>
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">ディアナチュラ</div><div class="mi-note">朝食後に服用</div></div>
+        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">蒸し大豆 or 納豆</div><div class="mi-note">1袋</div></div>
+        <div class="mir"><div class="mi-icon">🍵</div><div class="mi-name">味噌汁</div><div class="mi-note">1杯（蕎麦湯割り可）</div></div>
+        <div class="mir supp"><div class="mi-icon">🥤</div><div class="mi-name">ソイプロテイン（水割り）</div><div class="mi-note">1杯</div></div>
+        <div class="mir supp"><div class="mi-icon">💪</div><div class="mi-name">クレアチン</div><div class="mi-note">3〜4g（プロテインに混ぜる）</div></div>
+      </div>
+    </div>
+
+    <!-- 朝食後 -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">💊</div>
+        <div class="meal-section-title">朝食後</div>
+      </div>
+      <div class="meal-card">
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">アンビーク メンズマルチビタミン</div><div class="mi-note">2粒</div></div>
       </div>
     </div>
 
@@ -533,7 +567,19 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
       </div>
       <div class="meal-card">
         <div class="mir"><div class="mi-icon">🍱</div><div class="mi-name">自由（揚げ物・丼は控えめ推奨）</div><div class="mi-note">–</div></div>
-        <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢（追加推奨）</div><div class="mi-note">1パック</div></div>
+        <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢</div><div class="mi-note">1パック（推奨）</div></div>
+        <div class="mir"><div class="mi-icon">🐟</div><div class="mi-name">サバ水煮缶 or まいたけ</div><div class="mi-note">どちらか一方（任意）</div></div>
+      </div>
+    </div>
+
+    <!-- 昼食後 -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">💊</div>
+        <div class="meal-section-title">昼食後</div>
+      </div>
+      <div class="meal-card">
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">アンビーク メンズマルチビタミン</div><div class="mi-note">2粒</div></div>
       </div>
     </div>
 
@@ -545,6 +591,7 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
       </div>
       <div class="meal-card">
         <div class="mir"><div class="mi-icon">🍽️</div><div class="mi-name">普通食</div><div class="mi-note">制限なし</div></div>
+        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">納豆</div><div class="mi-note">追加推奨</div></div>
       </div>
     </div>
 
@@ -552,11 +599,11 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
     <div class="meal-section">
       <div class="meal-section-hd">
         <div class="meal-section-icon">🌛</div>
-        <div class="meal-section-title">就寝前</div>
+        <div class="meal-section-title">就寝前（夕食2時間後）</div>
       </div>
       <div class="meal-card">
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">ビフィラル</div><div class="mi-note">就寝前</div></div>
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">DHC カルシウム／マグ</div><div class="mi-note">就寝前</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">ビフィラル</div><div class="mi-note">1粒</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">DHC カルシウム／マグ</div><div class="mi-note">3粒</div></div>
       </div>
     </div>
   </div>
@@ -579,7 +626,7 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
     <div class="tip-note">
       <b>続けると効果的なもの</b><br>
       もずく酢は続けると腸の調子が整いやすい<br>
-      ディアナチュラ・ビフィラル・DHCカルシウム／マグは継続推奨
+      アンビーク・ビフィラル・DHCカルシウム／マグは継続推奨
     </div>
   </div>
 </div>
