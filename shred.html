@@ -277,6 +277,27 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 .im-step-text b{color:var(--text)}
 .im-close-btn{width:100%;margin-top:10px;padding:14px;border-radius:12px;background:var(--s2);border:1px solid var(--border);color:var(--text);font-family:var(--fd);font-size:18px;letter-spacing:1px;cursor:pointer}
 
+/* ── PAST LOG ── */
+.past-log-btn{margin:0 20px 24px;padding:13px;border-radius:12px;background:var(--s2);border:1px solid var(--border);color:var(--muted);font-family:var(--fd);font-size:16px;letter-spacing:1px;cursor:pointer;width:calc(100% - 40px);display:flex;align-items:center;justify-content:center;gap:8px;transition:border-color .2s,color .2s}
+.past-log-btn:active{opacity:.7}
+.past-log-btn:hover{border-color:var(--accent);color:var(--text)}
+.past-modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
+.past-modal-overlay.open{opacity:1;pointer-events:all}
+.past-modal{background:var(--surface);border-radius:24px 24px 0 0;border:1px solid var(--border);padding:24px 24px 44px;width:100%;max-width:430px;max-height:80vh;overflow-y:auto;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.past-modal-overlay.open .past-modal{transform:translateY(0)}
+.past-modal-title{font-family:var(--fd);font-size:24px;color:var(--accent);margin-bottom:4px;letter-spacing:1px}
+.past-modal-sub{font-size:11px;color:var(--muted);margin-bottom:18px}
+.pdi{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border)}
+.pdi:last-child{border-bottom:none}
+.pdi-date{font-size:12px;color:var(--muted);min-width:80px;font-weight:500}
+.pdi-date b{color:var(--text)}
+.pdi-label{flex:1;font-size:13px;color:var(--text)}
+.pdi.rest .pdi-label{color:var(--muted)}
+.pdi-done{font-size:12px;color:var(--accent);font-weight:700;padding:4px 10px;background:var(--adim);border-radius:20px;white-space:nowrap}
+.pdi-btn{padding:5px 12px;background:var(--accent);border:none;border-radius:20px;color:#000;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform .1s}
+.pdi-btn:active{transform:scale(.95)}
+.pdi-rest-label{font-size:11px;color:var(--muted)}
+
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
 .pulsing{animation:pulse 1.2s ease-in-out infinite}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -327,6 +348,12 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
     <div class="stat-card"><div class="stat-num" id="stat-total">0</div><div class="stat-label">累計回数</div></div>
     <div class="stat-card"><div class="stat-num" id="stat-week">0<span style="font-size:14px">W</span></div><div class="stat-label">現在の週</div></div>
   </div>
+
+  <!-- Past log button -->
+  <button class="past-log-btn" onclick="openPastModal()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    過去の記録を追加
+  </button>
 
   <!-- Today's workout -->
   <div class="sec">
@@ -632,6 +659,16 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 </nav>
 </div><!-- .app -->
 
+<!-- PAST LOG MODAL -->
+<div class="past-modal-overlay" id="past-modal">
+  <div class="past-modal">
+    <div class="mhandle"></div>
+    <div class="past-modal-title">過去の記録を追加</div>
+    <div class="past-modal-sub">過去30日分のトレーニング日を表示しています</div>
+    <div id="past-date-list"></div>
+  </div>
+</div>
+
 <!-- EXERCISE MODAL -->
 <div class="modal-overlay" id="ex-modal">
   <div class="modal">
@@ -804,7 +841,7 @@ function renderTodayCard(){
     item.className = 'ex-item'+(done?' done':'');
     item.innerHTML = `<div class="ex-check">${done?'✓':''}</div>
       <div class="ex-info"><div class="ex-name">${ex.name}</div><div class="ex-meta">${ex.meta}</div></div>
-      <div class="ex-sets">${ex.sets}×${ex.reps}</div>`;
+      <div class="ex-sets">${ex.reps}${ex.sets}セット</div>`;
     item.onclick = ()=>openExModal(i);
     el.appendChild(item);
   });
@@ -838,7 +875,7 @@ function openExModal(idx){
   const ex=wo.ex[idx];
   curSet=0; totSets=ex.sets;
   document.getElementById('modal-ex-name').textContent=ex.name;
-  document.getElementById('modal-ex-meta').textContent=ex.sets+'セット × '+ex.reps;
+  document.getElementById('modal-ex-meta').textContent=ex.reps+' × '+ex.sets+'セット';
   renderSetDots();
   document.getElementById('timer-display').style.display='none';
   document.getElementById('set-status').textContent='セット 1 を完了したらタップ';
@@ -938,7 +975,7 @@ function renderScheduleView(){
   });
 
   groups.forEach(g=>{
-    const exStr=g.ex.map(e=>`${e.name} ${e.sets}×${e.reps}`).join(' ／ ');
+    const exStr=g.ex.map(e=>`${e.name} ${e.reps}${e.sets}セット`).join(' ／ ');
     html+=`<div class="sch-card">
       <div class="sch-days ${g.typeClass}">${g.days.join('<br>')}</div>
       <div class="sch-info">
@@ -1179,6 +1216,63 @@ window.addEventListener('appinstalled',()=>{ document.getElementById('install-ba
     document.head.appendChild(link);
   }catch(e){}
 })();
+
+// ── PAST LOG MODAL ──
+function openPastModal(){
+  renderPastDateList();
+  document.getElementById('past-modal').classList.add('open');
+}
+
+function closePastModal(){
+  document.getElementById('past-modal').classList.remove('open');
+}
+
+function renderPastDateList(){
+  const list = document.getElementById('past-date-list');
+  list.innerHTML = '';
+  for(let i=1; i<=30; i++){
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    const key    = fmtDate(d);
+    const dayKey = DAY_KEYS[d.getDay()];
+    const wo     = DAY_WORKOUTS[dayKey];
+    const isRest = !wo;
+    const isDone = completedDays.includes(key);
+    const dayLabel = DAY_LABELS[d.getDay()];
+
+    const row = document.createElement('div');
+    row.className = 'pdi' + (isRest ? ' rest' : '');
+
+    let rightHtml;
+    if(isDone){
+      rightHtml = `<div class="pdi-done">✓ 完了済み</div>`;
+    } else if(isRest){
+      rightHtml = `<div class="pdi-rest-label">休息日</div>`;
+    } else {
+      rightHtml = `<button class="pdi-btn" onclick="logPastDate('${key}')">完了を記録</button>`;
+    }
+
+    row.innerHTML = `
+      <div class="pdi-date"><b>${d.getMonth()+1}/${d.getDate()}</b>（${dayLabel}）</div>
+      <div class="pdi-label">${isRest ? '休養日' : wo.label}</div>
+      ${rightHtml}`;
+    list.appendChild(row);
+  }
+}
+
+function logPastDate(dateStr){
+  if(!completedDays.includes(dateStr)){
+    completedDays.push(dateStr);
+    localStorage.setItem('shred_completed', JSON.stringify(completedDays));
+  }
+  renderPastDateList();
+  renderAll();
+}
+
+// 過去モーダルの背景タップで閉じる
+document.getElementById('past-modal').addEventListener('click', function(e){
+  if(e.target === this) closePastModal();
+});
 
 // ── RENDER ALL ──
 function renderAll(){
