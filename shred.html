@@ -173,15 +173,6 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 .wl-del{background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;padding:4px 6px;border-radius:6px}
 .wl-del:active{color:var(--red)}
 
-/* ── DIET ── */
-.water-strip{margin:0 20px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px}
-.water-label{font-size:10px;color:var(--muted);margin-bottom:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.water-glasses{display:flex;gap:6px;flex-wrap:wrap}
-.gb{width:36px;height:36px;border-radius:8px;border:1.5px solid var(--border);background:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
-.gb.filled{background:var(--adim);border-color:var(--accent)}
-.water-count{font-size:11px;color:var(--muted);margin-top:8px}
-.water-count b{color:var(--accent)}
-
 /* day-type tabs */
 .day-type-tabs{display:flex;gap:8px;padding:0 20px 16px}
 .dt-tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 8px;border-radius:14px;border:1.5px solid var(--border);background:var(--surface);cursor:pointer;transition:all .2s;user-select:none}
@@ -409,13 +400,6 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
   <div class="hd">
     <div class="logo">食事<span>.</span></div>
     <div class="hd-sub">1週間メニュー</div>
-  </div>
-
-  <!-- Water tracker -->
-  <div class="water-strip">
-    <div class="water-label">水分補給 — 目標 1.5〜2L</div>
-    <div class="water-glasses" id="water-glasses"></div>
-    <div class="water-count" id="water-count"><b>0</b> / 8 杯（200ml × 8）</div>
   </div>
 
   <!-- Day type tabs -->
@@ -695,8 +679,8 @@ const DAY_WORKOUTS = {
     {name:'スクワット（2Lペットボトル）', meta:'太もも・お尻 左右1本ずつ', sets:2, reps:'25回'},
   ]},
   wed:{ label:'体幹・腹筋', typeClass:'white', dur:10, ex:[
-    {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:2, reps:'5回'},
-    {name:'ホローホールド', meta:'体幹全体', sets:2, reps:'30秒'},
+    {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:2, reps:'8回'},
+    {name:'ホローホールド', meta:'体幹全体', sets:2, reps:'25秒'},
   ]},
   thu:null,
   fri:{ label:'下半身＋体幹', typeClass:'orange', dur:10, ex:[
@@ -1153,22 +1137,6 @@ function switchView(id,btn){
 }
 
 // ── DIET ──
-const waterKey='shred_water_'+fmtDate(today);
-let waterCount=parseInt(localStorage.getItem(waterKey)||'0');
-
-function renderWater(){
-  const c=document.getElementById('water-glasses'); c.innerHTML='';
-  for(let i=0;i<8;i++){
-    const btn=document.createElement('button');
-    btn.className='gb'+(i<waterCount?' filled':'');
-    btn.textContent='💧'; btn.onclick=()=>toggleWater(i);
-    c.appendChild(btn);
-  }
-  document.getElementById('water-count').innerHTML=`<b>${waterCount}</b> / 8 杯（200ml × 8）`;
-}
-
-function toggleWater(i){ waterCount=(i<waterCount)?i:i+1; localStorage.setItem(waterKey,waterCount); renderWater(); }
-
 function switchDayType(type){
   ['adjust','light','free'].forEach(t=>{
     document.getElementById('dt-'+t).classList.remove('active');
@@ -1219,7 +1187,6 @@ function renderAll(){
 }
 
 renderAll();
-renderWater();
 renderScheduleView();
 </script>
 </body>
