@@ -736,7 +736,12 @@ const DAY_KEYS   = ['sun','mon','tue','wed','thu','fri','sat'];
 const today    = new Date();
 const todayKey = DAY_KEYS[today.getDay()];
 
-function fmtDate(d){ return d.toISOString().slice(0,10); }
+function fmtDate(d){
+  const y  = d.getFullYear();
+  const m  = String(d.getMonth()+1).padStart(2,'0');
+  const dy = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${dy}`;
+}
 
 let currentWeek   = parseInt(localStorage.getItem('shred_week')||'1');
 let completedDays = JSON.parse(localStorage.getItem('shred_completed')||'[]');
@@ -1279,6 +1284,32 @@ function renderAll(){
   renderPhaseStrip(); renderWeekGrid(); renderTodayCard(); updateStats();
   document.getElementById('current-week').textContent=currentWeek;
 }
+
+// ── 一回限りデータ修正パッチ（タイムゾーンバグ対応 2026-05-19）──
+(function patchData(){
+  if(localStorage.getItem('shred_patch_tz_20260519')) return; // 適用済みならスキップ
+
+  // 昨日(2026-05-18)の体重が未登録なら69.7kgを追加
+  const weights = JSON.parse(localStorage.getItem('shred_weights')||'{}');
+  if(!weights['2026-05-18']){
+    weights['2026-05-18'] = 69.7;
+    localStorage.setItem('shred_weights', JSON.stringify(weights));
+  }
+
+  // 昨日(2026-05-18)のトレーニング完了が未登録なら追加
+  const completed = JSON.parse(localStorage.getItem('shred_completed')||'[]');
+  if(!completed.includes('2026-05-18')){
+    completed.push('2026-05-18');
+    localStorage.setItem('shred_completed', JSON.stringify(completed));
+    completedDays = completed; // メモリ上も反映
+  }
+
+  // 今日(2026-05-19)のex完了データが誤登録されていればクリア
+  // （UTC日付バグで2026-05-18に記録されていた分は昨日のデータとして正当）
+  localStorage.removeItem('shred_ex_2026-05-19'); // 今日分は空に
+
+  localStorage.setItem('shred_patch_tz_20260519', '1'); // 適用済みフラグ
+})();
 
 renderAll();
 renderScheduleView();
