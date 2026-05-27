@@ -708,21 +708,28 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 // DATA — 固定週間プログラム
 // ════════════════════════════════════════
 const DAY_WORKOUTS = {
-  mon:{ label:'胸・腕', typeClass:'white', dur:10, ex:[
+  mon:{ label:'胸・腕', typeClass:'white', dur:13, ex:[
     {name:'プッシュアップ（膝なし）', meta:'胸・肩・三頭筋', sets:2, reps:'10回'},
     {name:'ワイドプッシュアップ', meta:'胸に効かせる', sets:2, reps:'10回'},
+    {name:'スーパーマン', meta:'背筋・脊柱起立筋', sets:2, reps:'10回'},
   ]},
-  tue:{ label:'下半身', typeClass:'orange', dur:8, ex:[
+  tue:{ label:'下半身', typeClass:'orange', dur:14, ex:[
     {name:'スクワット（2Lペットボトル）', meta:'太もも・お尻 左右1本ずつ', sets:2, reps:'25回'},
+    {name:'ヒップリフト（ブリッジ）', meta:'お尻・ハムストリング', sets:2, reps:'15回'},
+    {name:'ドンキーキック', meta:'お尻の丸み・ヒップアップ', sets:2, reps:'左右10回'},
   ]},
-  wed:{ label:'体幹・腹筋', typeClass:'white', dur:10, ex:[
+  wed:{ label:'体幹・腹筋', typeClass:'white', dur:15, ex:[
     {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:2, reps:'8回'},
     {name:'ホローホールド', meta:'体幹全体', sets:2, reps:'25秒'},
+    {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:2, reps:'30秒'},
+    {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:2, reps:'10秒×10回'},
   ]},
   thu:null,
-  fri:{ label:'下半身＋体幹', typeClass:'orange', dur:10, ex:[
+  fri:{ label:'下半身＋体幹', typeClass:'orange', dur:15, ex:[
     {name:'スクワット（2Lペットボトル）', meta:'太もも・お尻 左右1本ずつ', sets:2, reps:'15回'},
     {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:2, reps:'3回'},
+    {name:'ヒップリフト（ブリッジ）', meta:'お尻・ハムストリング', sets:2, reps:'15回'},
+    {name:'ドンキーキック', meta:'お尻の丸み・ヒップアップ', sets:2, reps:'左右10回'},
   ]},
   sat:null, sun:null
 };
