@@ -707,34 +707,112 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 // ════════════════════════════════════════
 // DATA — 固定週間プログラム
 // ════════════════════════════════════════
-const DAY_WORKOUTS = {
-  mon:{ label:'胸・腕', typeClass:'white', dur:13, ex:[
-    {name:'プッシュアップ（膝なし）', meta:'胸・肩・三頭筋', sets:2, reps:'10回'},
-    {name:'ワイドプッシュアップ', meta:'胸に効かせる', sets:2, reps:'10回'},
-    {name:'スーパーマン', meta:'背筋・脊柱起立筋', sets:2, reps:'10回'},
-  ]},
-  tue:{ label:'下半身', typeClass:'orange', dur:14, ex:[
-    {name:'スクワット（2Lペットボトル）', meta:'太もも・お尻 左右1本ずつ', sets:2, reps:'25回'},
-    {name:'ヒップリフト（ブリッジ）', meta:'お尻・ハムストリング', sets:2, reps:'15回'},
-    {name:'ドンキーキック', meta:'お尻の丸み・ヒップアップ', sets:2, reps:'左右10回'},
-  ]},
-  wed:{ label:'体幹・腹筋', typeClass:'white', dur:15, ex:[
-    {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:2, reps:'8回'},
-    {name:'ホローホールド', meta:'体幹全体', sets:2, reps:'25秒'},
-    {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:2, reps:'30秒'},
-    {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:2, reps:'10秒×10回'},
-  ]},
-  thu:null,
-  fri:{ label:'下半身＋体幹', typeClass:'orange', dur:15, ex:[
-    {name:'スクワット（2Lペットボトル）', meta:'太もも・お尻 左右1本ずつ', sets:2, reps:'15回'},
-    {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:2, reps:'3回'},
-    {name:'ヒップリフト（ブリッジ）', meta:'お尻・ハムストリング', sets:2, reps:'15回'},
-    {name:'ドンキーキック', meta:'お尻の丸み・ヒップアップ', sets:2, reps:'左右10回'},
-  ]},
-  sat:null, sun:null
-};
-// 木曜は月曜と同じ（胸・腕）
-DAY_WORKOUTS.thu = DAY_WORKOUTS.mon;
+// ── フェーズ別プログラム定義 ──
+const PHASES = [
+  {
+    name:'フェーズ1', weeks:'1〜4週目', startWeek:1, endWeek:4, dur:'約20分',
+    mon:{ label:'胸・腕・背筋', typeClass:'white', dur:20, ex:[
+      {name:'プッシュアップ（膝なし）', meta:'胸・肩・三頭筋', sets:2, reps:'10回'},
+      {name:'ワイドプッシュアップ', meta:'胸に効かせる', sets:2, reps:'10回'},
+      {name:'スーパーマン', meta:'背筋・脊柱起立筋', sets:2, reps:'10回'},
+    ]},
+    tue:{ label:'下半身・ヒップ', typeClass:'orange', dur:20, ex:[
+      {name:'スクワット（2Lペットボトル左右1本）', meta:'太もも・お尻', sets:2, reps:'25回'},
+      {name:'ヒップリフト', meta:'お尻・ハムストリング', sets:2, reps:'15回'},
+      {name:'ドンキーキック', meta:'お尻の丸み・ヒップアップ', sets:2, reps:'左右10回'},
+    ]},
+    wed:{ label:'体幹・腹筋・骨盤', typeClass:'white', dur:20, ex:[
+      {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:2, reps:'8回'},
+      {name:'ホローホールド', meta:'体幹全体', sets:2, reps:'25秒'},
+      {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:2, reps:'30秒'},
+      {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:2, reps:'10秒×10回'},
+    ]},
+  },
+  {
+    name:'フェーズ2', weeks:'5〜8週目', startWeek:5, endWeek:8, dur:'約25分',
+    mon:{ label:'胸・腕・背筋', typeClass:'white', dur:25, ex:[
+      {name:'プッシュアップ', meta:'胸・肩・三頭筋', sets:3, reps:'20回'},
+      {name:'ワイドプッシュアップ', meta:'胸に効かせる', sets:3, reps:'15回'},
+      {name:'スーパーマン', meta:'背筋・脊柱起立筋', sets:3, reps:'15回'},
+    ]},
+    tue:{ label:'下半身・ヒップ', typeClass:'orange', dur:25, ex:[
+      {name:'スクワット（2Lペットボトル左右1本）', meta:'太もも・お尻', sets:3, reps:'30回'},
+      {name:'ヒップリフト', meta:'お尻・ハムストリング', sets:3, reps:'20回'},
+      {name:'ドンキーキック', meta:'お尻の丸み・ヒップアップ', sets:3, reps:'左右15回'},
+    ]},
+    wed:{ label:'体幹・腹筋・骨盤', typeClass:'white', dur:25, ex:[
+      {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:3, reps:'10回'},
+      {name:'ホローホールド', meta:'体幹全体', sets:3, reps:'30秒'},
+      {name:'レッグレイズ', meta:'腹直筋下部', sets:2, reps:'15回'},
+      {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:3, reps:'45秒'},
+      {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:3, reps:'10秒×15回'},
+    ]},
+  },
+  {
+    name:'フェーズ3', weeks:'9〜12週目', startWeek:9, endWeek:12, dur:'約30分',
+    mon:{ label:'胸・腕・背筋', typeClass:'white', dur:30, ex:[
+      {name:'プッシュアップ', meta:'胸・肩・三頭筋', sets:3, reps:'25回'},
+      {name:'ワイドプッシュアップ', meta:'胸に効かせる', sets:3, reps:'20回'},
+      {name:'スーパーマン', meta:'背筋・脊柱起立筋', sets:3, reps:'20回'},
+    ]},
+    tue:{ label:'下半身・ヒップ', typeClass:'orange', dur:30, ex:[
+      {name:'スクワット（2Lペットボトル左右1本）', meta:'太もも・お尻', sets:3, reps:'35回'},
+      {name:'ヒップリフト', meta:'お尻・ハムストリング', sets:3, reps:'25回'},
+      {name:'ドンキーキック', meta:'お尻の丸み・ヒップアップ', sets:3, reps:'左右20回'},
+    ]},
+    wed:{ label:'体幹・腹筋・骨盤', typeClass:'white', dur:30, ex:[
+      {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:3, reps:'15回'},
+      {name:'ホローホールド', meta:'体幹全体', sets:3, reps:'40秒'},
+      {name:'レッグレイズ', meta:'腹直筋下部', sets:3, reps:'20回'},
+      {name:'バーピー', meta:'全身・有酸素', sets:2, reps:'8回'},
+      {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:3, reps:'60秒'},
+      {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:3, reps:'10秒×20回'},
+    ]},
+  },
+  {
+    name:'フェーズ4', weeks:'13週目〜', startWeek:13, endWeek:Infinity, dur:'約35分',
+    mon:{ label:'胸・腕・背筋', typeClass:'white', dur:35, ex:[
+      {name:'ワイドプッシュアップ', meta:'胸に効かせる', sets:3, reps:'20回'},
+      {name:'プッシュアップ', meta:'胸・肩・三頭筋', sets:3, reps:'15回'},
+      {name:'スーパーマン', meta:'背筋・脊柱起立筋', sets:3, reps:'20回'},
+      {name:'バックエクステンション', meta:'背筋・脊柱起立筋強化', sets:3, reps:'15回'},
+    ]},
+    tue:{ label:'下半身・ヒップ', typeClass:'orange', dur:35, ex:[
+      {name:'ブルガリアンスクワット', meta:'太もも・お尻', sets:3, reps:'左右15回'},
+      {name:'スクワット（2Lペットボトル左右1本）', meta:'太もも・お尻', sets:3, reps:'20回'},
+      {name:'ヒップリフト', meta:'お尻・ハムストリング', sets:3, reps:'30回'},
+      {name:'ドンキーキック', meta:'お尻の丸み・ヒップアップ', sets:3, reps:'左右20回'},
+      {name:'サイドライイングクラム', meta:'股関節外転筋・骨盤安定', sets:3, reps:'20回'},
+    ]},
+    wed:{ label:'体幹・腹筋・骨盤', typeClass:'white', dur:35, ex:[
+      {name:'腹筋ローラー立ちコロ', meta:'腹直筋・体幹（上級）', sets:3, reps:'5回'},
+      {name:'サイドプランク', meta:'腹斜筋・体幹側面', sets:2, reps:'60秒'},
+      {name:'レッグレイズ', meta:'腹直筋下部', sets:3, reps:'20回'},
+      {name:'バーピー', meta:'全身・有酸素', sets:3, reps:'10回'},
+      {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:3, reps:'60秒'},
+      {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:3, reps:'15秒×20回'},
+    ]},
+  },
+];
+
+// 現在のフェーズインデックスを返す（0〜3）
+function getCurrentPhaseIdx(){
+  if(currentWeek<=4)  return 0;
+  if(currentWeek<=8)  return 1;
+  if(currentWeek<=12) return 2;
+  return 3;
+}
+
+// 現在のフェーズの曜日別スケジュールを返す
+function getPhaseSchedule(){
+  const ph = PHASES[getCurrentPhaseIdx()];
+  return {
+    mon: ph.mon, tue: ph.tue, wed: ph.wed,
+    thu: ph.mon, // 月と同じ
+    fri: ph.tue, // 火と同じ
+    sat: null, sun: null,
+  };
+}
 
 const DAY_LABELS = ['日','月','火','水','木','金','土'];
 const DAY_KEYS   = ['sun','mon','tue','wed','thu','fri','sat'];
@@ -759,8 +837,8 @@ let chartRange    = 14; // 0 = all
 document.getElementById('current-week').textContent = currentWeek;
 
 // ── HELPERS ──
-function todayWorkout(){ return DAY_WORKOUTS[todayKey]; }
-function isWorkDay(dayKey){ return DAY_WORKOUTS[dayKey] !== null; }
+function todayWorkout(){ return getPhaseSchedule()[todayKey]; }
+function isWorkDay(dayKey){ return getPhaseSchedule()[dayKey] !== null; }
 
 // ── STATS ──
 function calcStreak(){
@@ -780,15 +858,17 @@ function updateStats(){
 
 // ── PHASE STRIP ──
 function renderPhaseStrip(){
-  document.getElementById('ps-name').textContent = '週間プログラム';
-  document.getElementById('ps-meta').textContent = '月・火・水・木・金 × 週5日';
+  const ph = PHASES[getCurrentPhaseIdx()];
+  document.getElementById('ps-name').textContent = ph.name;
+  document.getElementById('ps-meta').textContent = ph.weeks + ' · 週5日 · ' + ph.dur;
 
   // this week workout days
+  const sched = getPhaseSchedule();
   const start = new Date(today); start.setDate(today.getDate()-today.getDay());
   let total=0, done=0;
   for(let i=0;i<7;i++){
     const d=new Date(start); d.setDate(start.getDate()+i);
-    if(isWorkDay(DAY_KEYS[d.getDay()])){
+    if(sched[DAY_KEYS[d.getDay()]]){
       total++;
       if(completedDays.includes(fmtDate(d))) done++;
     }
@@ -825,7 +905,7 @@ function renderTodayCard(){
   const btn = document.getElementById('start-btn');
   const wdLabel = DAY_LABELS[today.getDay()]+'曜日';
 
-  document.getElementById('phase-badge').textContent = wdLabel;
+  document.getElementById('phase-badge').textContent = PHASES[getCurrentPhaseIdx()].name;
 
   if(!wo){
     document.getElementById('today-type').textContent = '休養日';
@@ -961,25 +1041,22 @@ function promptWeekChange(){
 
 // ── SCHEDULE VIEW ──
 function renderScheduleView(){
-  document.getElementById('sch-sub').textContent = '固定週間スケジュール';
+  const ph    = PHASES[getCurrentPhaseIdx()];
+  const sched = getPhaseSchedule();
+  document.getElementById('sch-sub').textContent = ph.name + ' — ' + ph.weeks + ' · ' + ph.dur;
 
   const schedDays = [
-    {key:'mon',label:'月'},
-    {key:'tue',label:'火'},
-    {key:'wed',label:'水'},
-    {key:'thu',label:'木'},
-    {key:'fri',label:'金'},
-    {key:'sat',label:'土'},
-    {key:'sun',label:'日'},
+    {key:'mon',label:'月'},{key:'tue',label:'火'},{key:'wed',label:'水'},
+    {key:'thu',label:'木'},{key:'fri',label:'金'},{key:'sat',label:'土'},{key:'sun',label:'日'},
   ];
 
   let html='';
   const restDays=[];
   const groups=[];
 
-  // group workout days by unique workout object (merges mon+thu)
+  // 同じwoオブジェクト（参照一致）を持つ曜日をグループ化（月・木、火・金）
   schedDays.forEach(({key,label})=>{
-    const wo=DAY_WORKOUTS[key];
+    const wo=sched[key];
     if(!wo){ restDays.push(label); return; }
     const g=groups.find(g=>g.wo===wo);
     if(g) g.days.push(label);
@@ -1247,7 +1324,7 @@ function renderPastDateList(){
     d.setDate(today.getDate() - i);
     const key    = fmtDate(d);
     const dayKey = DAY_KEYS[d.getDay()];
-    const wo     = DAY_WORKOUTS[dayKey];
+    const wo     = getPhaseSchedule()[dayKey];
     const isRest = !wo;
     const isDone = completedDays.includes(key);
     const dayLabel = DAY_LABELS[d.getDay()];
