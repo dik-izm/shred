@@ -344,8 +344,6 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 
   <!-- Stats row -->
   <div class="stat-row" id="stat-row">
-    <div class="stat-card"><div class="stat-num" id="stat-streak">0</div><div class="stat-label">連続日数</div></div>
-    <div class="stat-card"><div class="stat-num" id="stat-total">0</div><div class="stat-label">累計回数</div></div>
     <div class="stat-card"><div class="stat-num" id="stat-week">0<span style="font-size:14px">W</span></div><div class="stat-label">現在の週</div></div>
   </div>
 
@@ -841,19 +839,8 @@ function todayWorkout(){ return getPhaseSchedule()[todayKey]; }
 function isWorkDay(dayKey){ return getPhaseSchedule()[dayKey] !== null; }
 
 // ── STATS ──
-function calcStreak(){
-  let s=0, d=new Date(today);
-  while(true){
-    if(completedDays.includes(fmtDate(d))){ s++; d.setDate(d.getDate()-1); }
-    else break;
-  }
-  return s;
-}
-
 function updateStats(){
-  document.getElementById('stat-streak').textContent = calcStreak();
-  document.getElementById('stat-total').textContent  = completedDays.length;
-  document.getElementById('stat-week').innerHTML     = currentWeek+'<span style="font-size:14px">W</span>';
+  document.getElementById('stat-week').innerHTML = currentWeek+'<span style="font-size:14px">W</span>';
 }
 
 // ── PHASE STRIP ──
