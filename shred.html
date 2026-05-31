@@ -424,37 +424,10 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 <div class="view" id="view-diet">
   <div class="hd">
     <div class="logo">食事<span>.</span></div>
-    <div class="hd-sub">1週間メニュー</div>
+    <div class="hd-sub">全日共通メニュー</div>
   </div>
 
-  <!-- Day type tabs -->
-  <div class="day-type-tabs">
-    <div class="dt-tab blue active" id="dt-adjust" onclick="switchDayType('adjust')">
-      <div class="dt-dot" style="background:#60a5fa"></div>
-      <div class="dt-name">調整日</div>
-      <div class="dt-days">月・水・金</div>
-    </div>
-    <div class="dt-tab green" id="dt-light" onclick="switchDayType('light')">
-      <div class="dt-dot" style="background:#4ade80"></div>
-      <div class="dt-name">普通日</div>
-      <div class="dt-days">火・木</div>
-    </div>
-    <div class="dt-tab free" id="dt-free" onclick="switchDayType('free')">
-      <div class="dt-dot" style="background:#888"></div>
-      <div class="dt-name">自由日</div>
-      <div class="dt-days">土・日</div>
-    </div>
-  </div>
-
-  <!-- 🔵 調整日パネル -->
-  <div class="day-panel active" id="panel-adjust">
-    <div class="day-banner blue">
-      <div class="db-circle blue">🔵</div>
-      <div class="db-text">
-        <div class="db-label" style="color:#60a5fa">月・水・金 — 調整日</div>
-        <div class="db-sub">腸内環境・栄養バランスを整える日</div>
-      </div>
-    </div>
+  <div style="padding:0 20px 24px">
 
     <!-- 朝食 -->
     <div class="meal-section">
@@ -463,108 +436,10 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
         <div class="meal-section-title">朝食</div>
       </div>
       <div class="meal-card">
-        <div class="mir"><div class="mi-icon">🍶</div><div class="mi-name">米糀甘酒</div><div class="mi-note">200ml</div></div>
-        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">蒸し大豆 or 納豆</div><div class="mi-note">1袋</div></div>
-        <div class="mir"><div class="mi-icon">🍵</div><div class="mi-name">なめこ汁 or あおさ汁</div><div class="mi-note">1杯（蕎麦湯割り可）</div></div>
-        <div class="mir supp"><div class="mi-icon">🥤</div><div class="mi-name">ソイプロテイン（水割り）</div><div class="mi-note">1杯</div></div>
-        <div class="mir supp"><div class="mi-icon">💪</div><div class="mi-name">クレアチン</div><div class="mi-note">3〜4g（プロテインに混ぜる）</div></div>
-      </div>
-    </div>
-
-    <!-- 朝食後 -->
-    <div class="meal-section">
-      <div class="meal-section-hd">
-        <div class="meal-section-icon">💊</div>
-        <div class="meal-section-title">朝食後</div>
-      </div>
-      <div class="meal-card">
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">アンビーク メンズマルチビタミン</div><div class="mi-note">2粒</div></div>
-      </div>
-    </div>
-
-    <!-- 昼食 -->
-    <div class="meal-section">
-      <div class="meal-section-hd">
-        <div class="meal-section-icon">☀️</div>
-        <div class="meal-section-title">昼食</div>
-      </div>
-      <div class="meal-card">
-        <div class="mir"><div class="mi-icon">🍜</div><div class="mi-name">ざるそば or 十割そば</div><div class="mi-note">1食</div></div>
-        <div class="mir"><div class="mi-icon">🥚</div><div class="mi-name">温泉卵（トッピング）</div><div class="mi-note">1個</div></div>
         <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢</div><div class="mi-note">1パック</div></div>
-        <div class="mir"><div class="mi-icon">🐟</div><div class="mi-name">サバ水煮缶 or まいたけ</div><div class="mi-note">どちらか一方</div></div>
-      </div>
-    </div>
-
-    <!-- 昼食後 -->
-    <div class="meal-section">
-      <div class="meal-section-hd">
-        <div class="meal-section-icon">💊</div>
-        <div class="meal-section-title">昼食後</div>
-      </div>
-      <div class="meal-card">
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">アンビーク メンズマルチビタミン</div><div class="mi-note">2粒</div></div>
-      </div>
-    </div>
-
-    <!-- 夕食 -->
-    <div class="meal-section">
-      <div class="meal-section-hd">
-        <div class="meal-section-icon">🌙</div>
-        <div class="meal-section-title">夕食</div>
-      </div>
-      <div class="meal-card">
-        <div class="mir"><div class="mi-icon">🍽️</div><div class="mi-name">普通食</div><div class="mi-note">制限なし</div></div>
-        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">納豆</div><div class="mi-note">追加推奨</div></div>
-      </div>
-    </div>
-
-    <!-- 就寝前 -->
-    <div class="meal-section">
-      <div class="meal-section-hd">
-        <div class="meal-section-icon">🌛</div>
-        <div class="meal-section-title">就寝前（夕食2時間後）</div>
-      </div>
-      <div class="meal-card">
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">ビフィラル</div><div class="mi-note">1粒</div></div>
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">DHC カルシウム／マグ</div><div class="mi-note">3粒</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 🟢 普通日パネル -->
-  <div class="day-panel" id="panel-light">
-    <div class="day-banner green">
-      <div class="db-circle green">🟢</div>
-      <div class="db-text">
-        <div class="db-label" style="color:#4ade80">火・木 — 普通日</div>
-        <div class="db-sub">昼食は自由・サプリは継続</div>
-      </div>
-    </div>
-
-    <!-- 朝食 -->
-    <div class="meal-section">
-      <div class="meal-section-hd">
-        <div class="meal-section-icon">🌅</div>
-        <div class="meal-section-title">朝食</div>
-      </div>
-      <div class="meal-card">
-        <div class="mir"><div class="mi-icon">🍶</div><div class="mi-name">米糀甘酒</div><div class="mi-note">200ml</div></div>
-        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">蒸し大豆 or 納豆</div><div class="mi-note">1袋</div></div>
-        <div class="mir"><div class="mi-icon">🍵</div><div class="mi-name">味噌汁</div><div class="mi-note">1杯（蕎麦湯割り可）</div></div>
-        <div class="mir supp"><div class="mi-icon">🥤</div><div class="mi-name">ソイプロテイン（水割り）</div><div class="mi-note">1杯</div></div>
-        <div class="mir supp"><div class="mi-icon">💪</div><div class="mi-name">クレアチン</div><div class="mi-note">3〜4g（プロテインに混ぜる）</div></div>
-      </div>
-    </div>
-
-    <!-- 朝食後 -->
-    <div class="meal-section">
-      <div class="meal-section-hd">
-        <div class="meal-section-icon">💊</div>
-        <div class="meal-section-title">朝食後</div>
-      </div>
-      <div class="meal-card">
-        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">アンビーク メンズマルチビタミン</div><div class="mi-note">2粒</div></div>
+        <div class="mir"><div class="mi-icon">🥚</div><div class="mi-name">豆腐＋生卵＋刻みネギ</div><div class="mi-note">–</div></div>
+        <div class="mir"><div class="mi-icon">🍵</div><div class="mi-name">みそ汁</div><div class="mi-note">1杯</div></div>
+        <div class="mir"><div class="mi-icon">🍶</div><div class="mi-name">米麹甘酒</div><div class="mi-note">200ml</div></div>
       </div>
     </div>
 
@@ -575,20 +450,45 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
         <div class="meal-section-title">昼食</div>
       </div>
       <div class="meal-card">
-        <div class="mir"><div class="mi-icon">🍱</div><div class="mi-name">自由（揚げ物・丼は控えめ推奨）</div><div class="mi-note">–</div></div>
-        <div class="mir"><div class="mi-icon">🌊</div><div class="mi-name">もずく酢</div><div class="mi-note">1パック（推奨）</div></div>
-        <div class="mir"><div class="mi-icon">🐟</div><div class="mi-name">サバ水煮缶 or まいたけ</div><div class="mi-note">どちらか一方（任意）</div></div>
+        <div class="mir"><div class="mi-icon">🍜</div><div class="mi-name">蕎麦＋生卵＋納豆＋刻みネギ</div><div class="mi-note">–</div></div>
       </div>
     </div>
 
-    <!-- 昼食後 -->
+    <!-- 間食 -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">💪</div>
+        <div class="meal-section-title">間食</div>
+      </div>
+      <div class="meal-card">
+        <div class="mir supp"><div class="mi-icon">🥤</div><div class="mi-name">ソイプロテイン（水割り）</div><div class="mi-note">1杯</div></div>
+        <div class="mir supp"><div class="mi-icon">💪</div><div class="mi-name">クレアチン（プロテインに混ぜる）</div><div class="mi-note">3〜4g</div></div>
+      </div>
+    </div>
+
+    <!-- サプリ（朝食後） -->
     <div class="meal-section">
       <div class="meal-section-hd">
         <div class="meal-section-icon">💊</div>
-        <div class="meal-section-title">昼食後</div>
+        <div class="meal-section-title">サプリ（朝食後）</div>
       </div>
       <div class="meal-card">
         <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">アンビーク メンズマルチビタミン</div><div class="mi-note">2粒</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">LOHAStyle シトルリンGOLD</div><div class="mi-note">2粒</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">DHC DHA</div><div class="mi-note">2粒</div></div>
+      </div>
+    </div>
+
+    <!-- サプリ（昼食後） -->
+    <div class="meal-section">
+      <div class="meal-section-hd">
+        <div class="meal-section-icon">💊</div>
+        <div class="meal-section-title">サプリ（昼食後）</div>
+      </div>
+      <div class="meal-card">
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">アンビーク メンズマルチビタミン</div><div class="mi-note">2粒</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">LOHAStyle シトルリンGOLD</div><div class="mi-note">2粒</div></div>
+        <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">DHC DHA</div><div class="mi-note">2粒</div></div>
       </div>
     </div>
 
@@ -600,7 +500,7 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
       </div>
       <div class="meal-card">
         <div class="mir"><div class="mi-icon">🍽️</div><div class="mi-name">普通食</div><div class="mi-note">制限なし</div></div>
-        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">納豆</div><div class="mi-note">追加推奨</div></div>
+        <div class="mir"><div class="mi-icon">🫘</div><div class="mi-name">納豆</div><div class="mi-note">推奨</div></div>
       </div>
     </div>
 
@@ -615,28 +515,7 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
         <div class="mir supp"><div class="mi-icon">💊</div><div class="mi-name">DHC カルシウム／マグ</div><div class="mi-note">3粒</div></div>
       </div>
     </div>
-  </div>
 
-  <!-- ⚪ 自由日パネル -->
-  <div class="day-panel" id="panel-free">
-    <div class="day-banner free-bg">
-      <div class="db-circle free-c">⚪</div>
-      <div class="db-text">
-        <div class="db-label" style="color:#aaa">土・日 — 自由日</div>
-        <div class="db-sub">全食自由。サプリは継続推奨</div>
-      </div>
-    </div>
-    <div class="meal-card">
-      <div class="free-day-body">
-        <div class="fd-main">FREE DAY</div>
-        <div class="fd-sub">全食自由です。<br>好きなものを食べてリフレッシュ。</div>
-      </div>
-    </div>
-    <div class="tip-note">
-      <b>続けると効果的なもの</b><br>
-      もずく酢は続けると腸の調子が整いやすい<br>
-      アンビーク・ビフィラル・DHCカルシウム／マグは継続推奨
-    </div>
   </div>
 </div>
 
@@ -1246,25 +1125,8 @@ function switchView(id,btn){
   btn.classList.add('active');
   if(id==='weight') renderWeightView();
   if(id==='schedule') renderScheduleView();
-  if(id==='diet') initDietTab();
 }
 
-// ── DIET ──
-function switchDayType(type){
-  ['adjust','light','free'].forEach(t=>{
-    document.getElementById('dt-'+t).classList.remove('active');
-    document.getElementById('panel-'+t).classList.remove('active');
-  });
-  document.getElementById('dt-'+type).classList.add('active');
-  document.getElementById('panel-'+type).classList.add('active');
-}
-
-function initDietTab(){
-  const d = today.getDay(); // 0=日,1=月,2=火,3=水,4=木,5=金,6=土
-  if(d===2||d===4) switchDayType('light');
-  else if(d===0||d===6) switchDayType('free');
-  else switchDayType('adjust');
-}
 
 // ── PWA ──
 let deferredPrompt=null;
