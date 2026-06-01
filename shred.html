@@ -588,86 +588,105 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 const PHASES = [
   {
     name:'フェーズ1', weeks:'1〜4週目', startWeek:1, endWeek:4, dur:'約20分',
-    mon:{ label:'胸・腕・背筋', typeClass:'white', dur:20, ex:[
-      {name:'プッシュアップ（膝なし）', meta:'胸・肩・三頭筋', sets:2, reps:'10回'},
+    mon:{ label:'胸・腕・背筋＋体幹', typeClass:'white', dur:20, ex:[
+      {name:'プッシュアップ', meta:'胸・肩・三頭筋', sets:2, reps:'10回'},
       {name:'ワイドプッシュアップ', meta:'胸に効かせる', sets:2, reps:'10回'},
       {name:'スーパーマン', meta:'背筋・脊柱起立筋', sets:2, reps:'10回'},
+      {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:2, reps:'30秒'},
+      {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:2, reps:'10秒×10回'},
     ]},
-    tue:{ label:'下半身・ヒップ', typeClass:'orange', dur:20, ex:[
+    tue:{ label:'下半身・ヒップ＋体幹', typeClass:'orange', dur:20, ex:[
       {name:'スクワット（2Lペットボトル左右1本）', meta:'太もも・お尻', sets:2, reps:'25回'},
       {name:'ヒップリフト', meta:'お尻・ハムストリング', sets:2, reps:'15回'},
       {name:'ドンキーキック', meta:'お尻の丸み・ヒップアップ', sets:2, reps:'左右10回'},
+      {name:'ホローホールド', meta:'体幹全体', sets:2, reps:'25秒'},
+      {name:'レッグレイズ', meta:'腹直筋下部', sets:2, reps:'10回'},
     ]},
-    wed:{ label:'体幹・腹筋・骨盤', typeClass:'white', dur:20, ex:[
+    wed:{ label:'腹筋・体幹メイン', typeClass:'white', dur:20, ex:[
       {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:2, reps:'8回'},
       {name:'ホローホールド', meta:'体幹全体', sets:2, reps:'25秒'},
+      {name:'レッグレイズ', meta:'腹直筋下部', sets:2, reps:'10回'},
       {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:2, reps:'30秒'},
       {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:2, reps:'10秒×10回'},
     ]},
   },
   {
     name:'フェーズ2', weeks:'5〜8週目', startWeek:5, endWeek:8, dur:'約25分',
-    mon:{ label:'胸・腕・背筋', typeClass:'white', dur:25, ex:[
-      {name:'プッシュアップ', meta:'胸・肩・三頭筋', sets:3, reps:'20回'},
-      {name:'ワイドプッシュアップ', meta:'胸に効かせる', sets:3, reps:'15回'},
-      {name:'スーパーマン', meta:'背筋・脊柱起立筋', sets:3, reps:'15回'},
+    mon:{ label:'胸・腕・背筋＋体幹', typeClass:'white', dur:25, ex:[
+      {name:'プッシュアップ', meta:'胸・肩・三頭筋', sets:2, reps:'15回'},
+      {name:'ワイドプッシュアップ', meta:'胸に効かせる', sets:2, reps:'12回'},
+      {name:'スーパーマン', meta:'背筋・脊柱起立筋', sets:2, reps:'15回'},
+      {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:2, reps:'40秒'},
+      {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:2, reps:'10秒×15回'},
     ]},
-    tue:{ label:'下半身・ヒップ', typeClass:'orange', dur:25, ex:[
-      {name:'スクワット（2Lペットボトル左右1本）', meta:'太もも・お尻', sets:3, reps:'30回'},
-      {name:'ヒップリフト', meta:'お尻・ハムストリング', sets:3, reps:'20回'},
-      {name:'ドンキーキック', meta:'お尻の丸み・ヒップアップ', sets:3, reps:'左右15回'},
-    ]},
-    wed:{ label:'体幹・腹筋・骨盤', typeClass:'white', dur:25, ex:[
-      {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:3, reps:'10回'},
-      {name:'ホローホールド', meta:'体幹全体', sets:3, reps:'30秒'},
+    tue:{ label:'下半身・ヒップ＋体幹', typeClass:'orange', dur:25, ex:[
+      {name:'スクワット（2Lペットボトル左右1本）', meta:'太もも・お尻', sets:2, reps:'30回'},
+      {name:'ヒップリフト', meta:'お尻・ハムストリング', sets:2, reps:'20回'},
+      {name:'ドンキーキック', meta:'お尻の丸み・ヒップアップ', sets:2, reps:'左右15回'},
+      {name:'ホローホールド', meta:'体幹全体', sets:2, reps:'30秒'},
       {name:'レッグレイズ', meta:'腹直筋下部', sets:2, reps:'15回'},
-      {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:3, reps:'45秒'},
-      {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:3, reps:'10秒×15回'},
+    ]},
+    wed:{ label:'腹筋・体幹メイン', typeClass:'white', dur:25, ex:[
+      {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:2, reps:'10回'},
+      {name:'ホローホールド', meta:'体幹全体', sets:2, reps:'30秒'},
+      {name:'レッグレイズ', meta:'腹直筋下部', sets:2, reps:'15回'},
+      {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:2, reps:'40秒'},
+      {name:'バーピー', meta:'全身・有酸素', sets:2, reps:'5回'},
+      {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:2, reps:'10秒×15回'},
     ]},
   },
   {
     name:'フェーズ3', weeks:'9〜12週目', startWeek:9, endWeek:12, dur:'約30分',
-    mon:{ label:'胸・腕・背筋', typeClass:'white', dur:30, ex:[
-      {name:'プッシュアップ', meta:'胸・肩・三頭筋', sets:3, reps:'25回'},
-      {name:'ワイドプッシュアップ', meta:'胸に効かせる', sets:3, reps:'20回'},
+    mon:{ label:'胸・腕・背筋＋体幹', typeClass:'white', dur:30, ex:[
+      {name:'プッシュアップ', meta:'胸・肩・三頭筋', sets:3, reps:'15回'},
+      {name:'ワイドプッシュアップ', meta:'胸に効かせる', sets:3, reps:'15回'},
       {name:'スーパーマン', meta:'背筋・脊柱起立筋', sets:3, reps:'20回'},
+      {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:3, reps:'50秒'},
+      {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:3, reps:'10秒×20回'},
     ]},
-    tue:{ label:'下半身・ヒップ', typeClass:'orange', dur:30, ex:[
-      {name:'スクワット（2Lペットボトル左右1本）', meta:'太もも・お尻', sets:3, reps:'35回'},
+    tue:{ label:'下半身・ヒップ＋体幹', typeClass:'orange', dur:30, ex:[
+      {name:'スクワット（2Lペットボトル左右1本）', meta:'太もも・お尻', sets:3, reps:'30回'},
       {name:'ヒップリフト', meta:'お尻・ハムストリング', sets:3, reps:'25回'},
       {name:'ドンキーキック', meta:'お尻の丸み・ヒップアップ', sets:3, reps:'左右20回'},
-    ]},
-    wed:{ label:'体幹・腹筋・骨盤', typeClass:'white', dur:30, ex:[
-      {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:3, reps:'15回'},
-      {name:'ホローホールド', meta:'体幹全体', sets:3, reps:'40秒'},
+      {name:'ホローホールド', meta:'体幹全体', sets:3, reps:'35秒'},
       {name:'レッグレイズ', meta:'腹直筋下部', sets:3, reps:'20回'},
-      {name:'バーピー', meta:'全身・有酸素', sets:2, reps:'8回'},
-      {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:3, reps:'60秒'},
+    ]},
+    wed:{ label:'腹筋・体幹メイン', typeClass:'white', dur:30, ex:[
+      {name:'腹筋ローラー膝コロ', meta:'腹直筋・体幹', sets:3, reps:'12回'},
+      {name:'ホローホールド', meta:'体幹全体', sets:3, reps:'35秒'},
+      {name:'レッグレイズ', meta:'腹直筋下部', sets:3, reps:'20回'},
+      {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:3, reps:'50秒'},
+      {name:'バーピー', meta:'全身・有酸素', sets:3, reps:'8回'},
       {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:3, reps:'10秒×20回'},
     ]},
   },
   {
     name:'フェーズ4', weeks:'13週目〜', startWeek:13, endWeek:Infinity, dur:'約35分',
-    mon:{ label:'胸・腕・背筋', typeClass:'white', dur:35, ex:[
+    mon:{ label:'胸・腕・背筋＋体幹', typeClass:'white', dur:35, ex:[
+      {name:'プッシュアップ', meta:'胸・肩・三頭筋', sets:3, reps:'20回'},
       {name:'ワイドプッシュアップ', meta:'胸に効かせる', sets:3, reps:'20回'},
-      {name:'プッシュアップ', meta:'胸・肩・三頭筋', sets:3, reps:'15回'},
       {name:'スーパーマン', meta:'背筋・脊柱起立筋', sets:3, reps:'20回'},
       {name:'バックエクステンション', meta:'背筋・脊柱起立筋強化', sets:3, reps:'15回'},
+      {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:3, reps:'60秒'},
+      {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:3, reps:'15秒×20回'},
     ]},
-    tue:{ label:'下半身・ヒップ', typeClass:'orange', dur:35, ex:[
+    tue:{ label:'下半身・ヒップ＋体幹', typeClass:'orange', dur:35, ex:[
       {name:'ブルガリアンスクワット', meta:'太もも・お尻', sets:3, reps:'左右15回'},
-      {name:'スクワット（2Lペットボトル左右1本）', meta:'太もも・お尻', sets:3, reps:'20回'},
+      {name:'スクワット（2Lペットボトル左右1本）', meta:'太もも・お尻', sets:3, reps:'35回'},
       {name:'ヒップリフト', meta:'お尻・ハムストリング', sets:3, reps:'30回'},
       {name:'ドンキーキック', meta:'お尻の丸み・ヒップアップ', sets:3, reps:'左右20回'},
       {name:'サイドライイングクラム', meta:'股関節外転筋・骨盤安定', sets:3, reps:'20回'},
+      {name:'ホローホールド', meta:'体幹全体', sets:3, reps:'40秒'},
+      {name:'レッグレイズ', meta:'腹直筋下部', sets:3, reps:'25回'},
     ]},
-    wed:{ label:'体幹・腹筋・骨盤', typeClass:'white', dur:35, ex:[
+    wed:{ label:'腹筋・体幹メイン', typeClass:'white', dur:35, ex:[
       {name:'腹筋ローラー立ちコロ', meta:'腹直筋・体幹（上級）', sets:3, reps:'5回'},
-      {name:'サイドプランク', meta:'腹斜筋・体幹側面', sets:2, reps:'60秒'},
-      {name:'レッグレイズ', meta:'腹直筋下部', sets:3, reps:'20回'},
-      {name:'バーピー', meta:'全身・有酸素', sets:3, reps:'10回'},
+      {name:'ホローホールド', meta:'体幹全体', sets:3, reps:'40秒'},
+      {name:'レッグレイズ', meta:'腹直筋下部', sets:3, reps:'25回'},
       {name:'ドローイン', meta:'腹横筋・骨盤安定', sets:3, reps:'60秒'},
+      {name:'バーピー', meta:'全身・有酸素', sets:3, reps:'10回'},
       {name:'ケーゲル体操', meta:'骨盤底筋・頻尿改善', sets:3, reps:'15秒×20回'},
+      {name:'サイドプランク', meta:'腹斜筋・体幹側面', sets:2, reps:'60秒'},
     ]},
   },
 ];
