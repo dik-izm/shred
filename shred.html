@@ -175,38 +175,7 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 .wl-del{background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;padding:4px 6px;border-radius:6px}
 .wl-del:active{color:var(--red)}
 
-/* day-type tabs */
-.day-type-tabs{display:flex;gap:8px;padding:0 20px 16px}
-.dt-tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 8px;border-radius:14px;border:1.5px solid var(--border);background:var(--surface);cursor:pointer;transition:all .2s;user-select:none}
-.dt-tab:active{opacity:.8}
-.dt-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.dt-name{font-size:12px;font-weight:700;color:var(--muted)}
-.dt-days{font-size:9px;color:var(--muted);letter-spacing:.02em}
-.dt-tab.active{border-color:currentColor}
-.dt-tab.active .dt-name{color:inherit}
-.dt-tab.active .dt-days{opacity:.7}
-.dt-tab.blue{color:#60a5fa}
-.dt-tab.blue.active{background:rgba(96,165,250,.1);border-color:#60a5fa}
-.dt-tab.green{color:#4ade80}
-.dt-tab.green.active{background:rgba(74,222,128,.1);border-color:#4ade80}
-.dt-tab.free{color:#888}
-.dt-tab.free.active{background:rgba(136,136,136,.1);border-color:#888}
-
-/* day panels */
-.day-panel{display:none;padding:0 20px 24px}
-.day-panel.active{display:block}
-.day-banner{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;margin-bottom:16px}
-.day-banner.blue{background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.2)}
-.day-banner.green{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2)}
-.day-banner.free-bg{background:rgba(136,136,136,.08);border:1px solid rgba(136,136,136,.2)}
-.db-circle{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.db-circle.blue{background:rgba(96,165,250,.15)}
-.db-circle.green{background:rgba(74,222,128,.15)}
-.db-circle.free-c{background:rgba(136,136,136,.15)}
-.db-text{}
-.db-label{font-size:14px;font-weight:700}
-.db-sub{font-size:11px;color:var(--muted);margin-top:2px}
-
+/* ── DIET ── */
 .meal-section{margin-bottom:14px}
 .meal-section-hd{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .meal-section-icon{width:28px;height:28px;border-radius:8px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
@@ -220,23 +189,6 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 .mir.supp{background:rgba(249,115,22,.04)}
 .mir.supp .mi-name{color:var(--accent)}
 .mir.supp .mi-icon{font-size:14px}
-.free-day-body{text-align:center;padding:28px 16px}
-.free-day-body .fd-main{font-family:var(--fd);font-size:36px;color:var(--text);letter-spacing:2px;margin-bottom:8px}
-.free-day-body .fd-sub{font-size:13px;color:var(--muted);line-height:1.8}
-.tip-note{background:var(--s2);border-radius:12px;padding:12px 14px;margin-top:14px;font-size:12px;color:var(--muted);line-height:1.8;border-left:3px solid var(--accent)}
-.tip-note b{color:var(--text)}
-
-/* ── TIPS ── */
-.ms-bar{padding:0 20px 18px}
-.ms-row{display:flex;gap:8px}
-.ms-card{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center}
-.ms-week{font-family:var(--fd);font-size:28px;color:var(--accent)}
-.ms-label{font-size:9px;color:var(--muted);margin-top:2px;line-height:1.5}
-.tip-sec{padding:0 20px 24px}
-.tip-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:10px}
-.tip-num{font-family:var(--fd);font-size:46px;color:rgba(249,115,22,.1);line-height:1;float:right;margin:-4px -4px 0 0}
-.tip-title{font-size:14px;font-weight:700;margin-bottom:6px}
-.tip-body{font-size:13px;color:var(--muted);line-height:1.7}
 
 /* ── INSTALL BANNER ── */
 .install-banner{display:none;margin:0 20px 14px;background:linear-gradient(135deg,#1a0e05,#1c1c1c);border:1px solid var(--ba);border-radius:14px;padding:14px 16px;align-items:center;gap:12px}
@@ -246,26 +198,8 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 .ib-btn{padding:8px 16px;background:var(--accent);border:none;border-radius:10px;color:#000;font-family:var(--fd);font-size:14px;letter-spacing:1px;cursor:pointer;white-space:nowrap;flex-shrink:0}
 .ib-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:16px;padding:2px;flex-shrink:0}
 
-/* ── MODAL ── */
-.modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
-.modal-overlay.open{opacity:1;pointer-events:all}
-.modal{background:var(--surface);border-radius:24px 24px 0 0;border:1px solid var(--border);padding:24px 24px 44px;width:100%;max-width:430px;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);position:relative}
-.modal-overlay.open .modal{transform:translateY(0)}
+/* ── MODAL共通 ── */
 .mhandle{width:36px;height:4px;background:var(--border);border-radius:4px;margin:0 auto 22px}
-.close-btn{position:absolute;top:22px;right:22px;background:var(--s2);border:1px solid var(--border);color:var(--text);width:30px;height:30px;border-radius:50%;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.modal-ex-name{font-family:var(--fd);font-size:30px;margin-bottom:4px;color:var(--accent)}
-.modal-ex-meta{font-size:13px;color:var(--muted);margin-bottom:24px}
-.timer-display{text-align:center;margin:18px 0}
-.timer-num{font-family:var(--fd);font-size:76px;color:var(--text);line-height:1}
-.timer-label{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:.1em}
-.set-tracker{display:flex;gap:8px;justify-content:center;margin:18px 0}
-.set-dot{width:10px;height:10px;border-radius:50%;background:var(--s2);border:1.5px solid var(--border);transition:all .2s}
-.set-dot.done{background:var(--accent);border-color:var(--accent)}
-.modal-btns{display:flex;gap:10px;margin-top:18px}
-.mbtn{flex:1;padding:14px;border-radius:12px;border:none;font-family:var(--fd);font-size:18px;letter-spacing:1px;cursor:pointer;transition:transform .1s}
-.mbtn:active{transform:scale(.97)}
-.mbtn.primary{background:var(--accent);color:#000;box-shadow:0 3px 14px var(--aglow)}
-.mbtn.ghost{background:var(--s2);color:var(--text);border:1px solid var(--border)}
 
 /* ── INSTALL MODAL ── */
 .install-modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);backdrop-filter:blur(10px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
@@ -300,10 +234,11 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
 .pdi-btn:active{transform:scale(.95)}
 .pdi-rest-label{font-size:11px;color:var(--muted)}
 
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-.pulsing{animation:pulse 1.2s ease-in-out infinite}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.fade-in{animation:fadeIn .3s ease forwards}
+
+/* ── BACKUP ── */
+.backup-row{display:flex;gap:10px;padding:0 20px 24px}
+.backup-btn{flex:1;padding:12px;border-radius:12px;background:var(--s2);border:1px solid var(--border);color:var(--muted);font-family:var(--fd);font-size:15px;letter-spacing:1px;cursor:pointer;transition:border-color .2s,color .2s}
+.backup-btn:active{opacity:.7}
 </style>
 </head>
 <body>
@@ -419,6 +354,11 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--fb);min-heigh
     <canvas id="weight-canvas" height="180" style="display:none"></canvas>
   </div>
   <div class="wlog" id="wlog"></div>
+  <div class="backup-row">
+    <button class="backup-btn" onclick="exportBackup()">📤 バックアップ</button>
+    <button class="backup-btn" onclick="document.getElementById('import-file').click()">📥 復元</button>
+    <input type="file" id="import-file" accept=".json,application/json" style="display:none" onchange="importBackup(event)">
+  </div>
 </div>
 
 <!-- ════ DIET VIEW ════ -->
@@ -773,7 +713,32 @@ function fmtDate(d){
   return `${y}-${m}-${dy}`;
 }
 
-let currentWeek   = parseInt(localStorage.getItem('shred_week')||'1');
+// ── 週数の自動計算 ──
+// 第1週の日曜日（アンカー）を保存し、今日との差から現在の週を自動算出する。
+function weekSunday(d){
+  const s = new Date(d); s.setDate(d.getDate()-d.getDay()); s.setHours(0,0,0,0);
+  return s;
+}
+function calcWeekFromAnchor(){
+  const anchorStr = localStorage.getItem('shred_start_anchor');
+  if(!anchorStr) return null;
+  const anchor = new Date(anchorStr+'T00:00:00');
+  const diffDays = Math.round((weekSunday(today)-anchor)/86400000);
+  return Math.max(1, Math.floor(diffDays/7)+1);
+}
+function setWeekAnchor(week){
+  const a = weekSunday(today); a.setDate(a.getDate()-(week-1)*7);
+  localStorage.setItem('shred_start_anchor', fmtDate(a));
+}
+
+let currentWeek = calcWeekFromAnchor();
+if(currentWeek===null){
+  // 初回：手動保存されていた週数からアンカーを逆算
+  currentWeek = parseInt(localStorage.getItem('shred_week')||'1');
+  setWeekAnchor(currentWeek);
+}
+localStorage.setItem('shred_week', currentWeek);
+
 let completedDays = JSON.parse(localStorage.getItem('shred_completed')||'[]');
 let weightData    = JSON.parse(localStorage.getItem('shred_weights')||'{}');
 let chartRange    = 14; // 0 = all
@@ -899,6 +864,7 @@ function completeBodyBlock(){
 }
 
 // ── WEEK CHANGE ──
+// 手動修正もできる（修正するとアンカーも更新され、以後は自動で進む）
 function promptWeekChange(){
   const w=prompt('現在の週を入力してください（1〜99）:',currentWeek);
   if(w===null) return;
@@ -906,6 +872,7 @@ function promptWeekChange(){
   if(isNaN(n)||n<1){ alert('1以上の数字を入力してください'); return; }
   currentWeek=n;
   localStorage.setItem('shred_week',n);
+  setWeekAnchor(n);
   document.getElementById('current-week').textContent=n;
   renderAll();
   renderScheduleView();
@@ -1217,30 +1184,55 @@ function renderAll(){
   document.getElementById('current-week').textContent=currentWeek;
 }
 
-// ── 一回限りデータ修正パッチ（タイムゾーンバグ対応 2026-05-19）──
-(function patchData(){
-  if(localStorage.getItem('shred_patch_tz_20260519')) return; // 適用済みならスキップ
-
-  // 昨日(2026-05-18)の体重が未登録なら69.7kgを追加
-  const weights = JSON.parse(localStorage.getItem('shred_weights')||'{}');
-  if(!weights['2026-05-18']){
-    weights['2026-05-18'] = 69.7;
-    localStorage.setItem('shred_weights', JSON.stringify(weights));
+// ── バックアップ（書き出し）──
+function exportBackup(){
+  const data = {};
+  for(let i=0; i<localStorage.length; i++){
+    const k = localStorage.key(i);
+    if(k && k.startsWith('shred_')) data[k] = localStorage.getItem(k);
   }
+  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'shred_backup_'+fmtDate(today)+'.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
 
-  // 昨日(2026-05-18)のトレーニング完了が未登録なら追加
-  const completed = JSON.parse(localStorage.getItem('shred_completed')||'[]');
-  if(!completed.includes('2026-05-18')){
-    completed.push('2026-05-18');
-    localStorage.setItem('shred_completed', JSON.stringify(completed));
-    completedDays = completed; // メモリ上も反映
+// ── 復元（読み込み）──
+function importBackup(ev){
+  const file = ev.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e=>{
+    try{
+      const data = JSON.parse(e.target.result);
+      const keys = Object.keys(data).filter(k=>k.startsWith('shred_'));
+      if(keys.length===0){ alert('SHREDのバックアップファイルではありません'); return; }
+      if(!confirm(keys.length+'件のデータを復元します。現在のデータは上書きされます。よろしいですか？')) return;
+      keys.forEach(k=>localStorage.setItem(k, data[k]));
+      alert('復元しました。画面を再読み込みします。');
+      location.reload();
+    }catch(err){
+      alert('ファイルの読み込みに失敗しました');
+    }
+  };
+  reader.readAsText(file);
+  ev.target.value = '';
+}
+
+// ── 古い完了フラグの自動掃除（30日より前のshred_daily_/shred_body_を削除）──
+(function cleanOldFlags(){
+  const limit = new Date(today); limit.setDate(limit.getDate()-30);
+  const limitStr = fmtDate(limit);
+  const toDelete = [];
+  for(let i=0; i<localStorage.length; i++){
+    const k = localStorage.key(i);
+    if(!k) continue;
+    const m = k.match(/^shred_(daily|body|ex)_(\d{4}-\d{2}-\d{2})$/);
+    if(m && m[2] < limitStr) toDelete.push(k);
   }
-
-  // 今日(2026-05-19)のex完了データが誤登録されていればクリア
-  // （UTC日付バグで2026-05-18に記録されていた分は昨日のデータとして正当）
-  localStorage.removeItem('shred_ex_2026-05-19'); // 今日分は空に
-
-  localStorage.setItem('shred_patch_tz_20260519', '1'); // 適用済みフラグ
+  toDelete.forEach(k=>localStorage.removeItem(k));
 })();
 
 renderAll();
